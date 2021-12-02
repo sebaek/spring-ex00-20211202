@@ -13,7 +13,11 @@ public class App {
 		ApplicationContext context = new ClassPathXmlApplicationContext(contextFilePath);
 
 		MyServlet s1 = context.getBean(MyServlet.class);
+		MyDao d1 = context.getBean(MyDao.class);
 
 		log.warn(s1);
+		log.warn(d1);
+		
+		log.warn(s1.getMyDao());
 	}
 }
