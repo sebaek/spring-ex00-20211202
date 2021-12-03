@@ -34,6 +34,12 @@ public class Controller02 {
 	public void method04() {
 		System.out.println("메소드 04 일함");
 	}
+	
+	
+	@RequestMapping(value="/met05", method = {RequestMethod.GET, RequestMethod.POST})
+	public void mthod05() {
+		System.out.println("메소드 05 일함");
+	}
 
 }
 
