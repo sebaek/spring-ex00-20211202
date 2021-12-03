@@ -18,5 +18,20 @@ public class App {
 
 		log.warn(student);
 		log.warn(teacher);
+		
+		log.warn("--- bean 이름으로 얻기 ----");
+		
+		log.warn(context.getBean("student"));
+		log.warn(context.getBean("teacher"));
 	}
 }
+
+
+
+
+
+
+
+
+
+
