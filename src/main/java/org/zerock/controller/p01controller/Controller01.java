@@ -33,7 +33,10 @@ public class Controller01 {
 	}
 	
 	// "/cont01/met05", "/cont01/met06" 로 요청이 왔을 때 일하는 메소드 method05 작성
-	
+	@RequestMapping({"/met05", "/met06"})
+	public void method05() {
+		System.out.println("메소드 05 일함");
+	}
 }
 
 
