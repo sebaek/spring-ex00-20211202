@@ -43,6 +43,7 @@ public class Controller04 {
 		System.out.println(bean); // 잘 들어왔는지 확인
 	}
 	
+	// /cont04/met04?country=usa&phone=0109999&address=seoul&email=usa@seoul.com
 	@RequestMapping("/met04")
 	public void method04(Bean02 bean) {
 		
