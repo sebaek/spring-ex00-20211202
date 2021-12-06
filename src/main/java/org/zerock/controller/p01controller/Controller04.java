@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerock.controller.p01controller.bean.Bean01;
+import org.zerock.controller.p01controller.bean.Bean02;
 
 @Controller
 @RequestMapping("/cont04")
@@ -40,6 +41,12 @@ public class Controller04 {
 	public void method03(Bean01 bean) {
 		
 		System.out.println(bean); // 잘 들어왔는지 확인
+	}
+	
+	@RequestMapping("/met04")
+	public void method04(Bean02 bean) {
+		
+		System.out.println(bean); // 각 프로퍼티가 null이 아니도록 요청 해보세요.
 	}
 }
 
