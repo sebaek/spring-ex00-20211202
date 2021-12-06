@@ -23,8 +23,11 @@ public class Controller05 {
 //		String path = "/WEB-INF/view/view01.jsp";
 //		request.getRequestDispatcher(path).forward(request, response);
 		
+		/* spring mvc 사용시 */ 
 		return "view01";
 	}
+	
+	// 할일 : /cont05/met02 로 요청이 오면 /WEB-INF/views/view02.jsp로 포워드 되도록 method02작성
 }
 
 
