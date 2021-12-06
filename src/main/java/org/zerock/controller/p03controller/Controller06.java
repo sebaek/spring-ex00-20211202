@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerock.controller.p03controller.bean.Bean01;
+import org.zerock.controller.p03controller.bean.Bean02;
 
 @Controller
 @RequestMapping("/cont06")
