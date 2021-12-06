@@ -81,6 +81,10 @@ public class Controller05 {
 	
 	// 할 일 : /cont05/met09 로 요청이 왔을 때 /WEB-INF/views/cont05/met09.jsp로 포워드 되도록 method09 메소드를 작성
 	
+	@RequestMapping("/met09")
+	public void method09() {
+		
+	}
 }
 
 
