@@ -63,8 +63,23 @@ public class Controller06 {
 		// 할일 : view (jsp) 를 만들어서 "bean01" attribute가 있는 지 확인) 
 	}
 	
-	
+	@RequestMapping("/met06")
+	public void method06(Model model) {
+		
+		model.addAttribute("attr1", "val1");
+		model.addAttribute("attr2", "val2");
+		
+	}
 }
+
+
+
+
+
+
+
+
+
 
 
 
