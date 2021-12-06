@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.zerock.controller.p03controller.bean.Bean01;
 
 @Controller
 @RequestMapping("/cont06")
@@ -37,9 +38,39 @@ public class Controller06 {
 		
 	}
 	
+	@RequestMapping("/met04")
+	public void method04(Model model) {
+		// 3. 
+		Bean01 bean = new Bean01();
+		bean.setAge(99);
+		bean.setName("trump");
+		
+		// 4. 
+		model.addAttribute("myBean", bean);
+	}
+	
+	@RequestMapping("/met05")
+	public void method05(Model model) {
+		// 3.
+		Bean01 bean = new Bean01();
+		bean.setAge(88);
+		bean.setName("donald");
+		
+		// 4.
+		//model.addAttribute("bean01", bean); // attribute의 이름이 클래스(type)의 이름과 같은 경우 생략 가능
+		model.addAttribute(bean);
+		
+		// 할일 : view (jsp) 를 만들어서 "bean01" attribute가 있는 지 확인) 
+	}
 	
 	
 }
+
+
+
+
+
+
 
 
 
