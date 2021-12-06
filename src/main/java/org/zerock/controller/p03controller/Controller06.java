@@ -100,6 +100,12 @@ public class Controller06 {
 		
 		return "/cont06/met09";
 	}
+	
+	@RequestMapping("/met11")
+	public void method11(@ModelAttribute Bean01 bean) {
+		
+		
+	}
 
 }
 
