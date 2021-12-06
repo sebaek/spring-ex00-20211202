@@ -106,6 +106,12 @@ public class Controller06 {
 		
 		
 	}
+	
+	@RequestMapping("/met12")
+	public String method12(Bean01 bean) {
+		
+		return "/cont06/met11";
+	}
 
 }
 
