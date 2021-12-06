@@ -30,7 +30,30 @@ public class Controller06 {
 	// 가 되도록 method03 작성
 	// 또한 view도 작성해서 myattr2가 myvalue2를 출력하는 확인
 	
+	@RequestMapping("/met03")
+	public void method03(Model model) {
+		
+		model.addAttribute("myattr2", "myvalue2");
+		
+	}
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
