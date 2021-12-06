@@ -65,6 +65,19 @@ public class Controller05 {
 	}
 
 	
+	// /cont05/met07
+	@RequestMapping("/met07")
+	public String method07() {
+		
+		return null; // view 이름과 요청 경로가 같은 경우 null 리턴 가능
+	}
+
+	// /cont05/met08
+	@RequestMapping("/met08")
+	public void method08() {
+		
+		// view 이름과 요청 경로가 같은 경우 void return 타입으로 결정
+	}
 	
 }
 
