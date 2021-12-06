@@ -1,9 +1,13 @@
 package org.zerock.controller.p01controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -81,11 +85,26 @@ public class Controller04 {
 		System.out.println(bean);
 	}
 	
-	
+	// ?name=john&id=99&address=seoul&address=jeju&address=ny
 	@RequestMapping("/met09")
 	public void method09(Bean06 bean) {
 		System.out.println(bean); // 모든 프로퍼티에 값이 들어가도록 요청
 	}
+	
+	@RequestMapping("/met10")
+	public void method10(@RequestParam("date")
+//	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(iso = ISO.DATE)
+	LocalDate date) {
+		System.out.println(date);
+	}
+	
+	@RequestMapping("/met11")
+	public void method11(@RequestParam("dateTime") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime dateTime) {
+		System.out.println(dateTime);
+	}
+	
+	
 }
 
 
