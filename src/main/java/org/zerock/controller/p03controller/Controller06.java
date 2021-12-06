@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerock.controller.p03controller.bean.Bean01;
 
@@ -70,7 +71,39 @@ public class Controller06 {
 		model.addAttribute("attr2", "val2");
 		
 	}
+	
+	@RequestMapping("/met07")
+	public void method07(String name, String city, Model model) {
+		
+		model.addAttribute("name", name);
+		model.addAttribute("city", city);
+		
+	}
+	
+	
+	@RequestMapping("/met08")
+	public String method08(@ModelAttribute("name") String name, 
+			@ModelAttribute("city") String city) {
+		
+		return "/cont06/met07";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
