@@ -116,6 +116,14 @@ public class Controller04 {
 	public void method13(Bean08 bean) {
 		System.out.println(bean); // 모든 프로퍼티가 request param으로 부터 채워져서 출력되도록
 	}
+	
+	@RequestMapping("/met14")
+	public void method14(@RequestParam String name, @RequestParam int age, HttpServletRequest request) {
+		System.out.println(name);
+		System.out.println(age);
+		
+		System.out.println(request);
+	}
 
 }
 
