@@ -112,6 +112,14 @@ public class Controller06 {
 		
 		return "/cont06/met11";
 	}
+	
+	
+	// /cont06/met13?city=seoul&address=gangnam
+	@RequestMapping("/met13")
+	public void method13(Bean02 bean) {
+		// todo1: Bean02 클래스 완성
+		// todo2: /cont06/met13.jsp 를 작성해서 seoul,gangnam이 출력   
+	}
 
 }
 
