@@ -28,7 +28,50 @@ public class Controller05 {
 	}
 	
 	// 할일 : /cont05/met02 로 요청이 오면 /WEB-INF/views/view02.jsp로 포워드 되도록 method02작성
+	@RequestMapping("/met02")
+	public String method02() {
+		return "view02";
+	}
+	
+	@RequestMapping("/met03") 
+	public String method03() {
+		return "cont05/view03"; // prefix: /WEB-INF/views/  , suffix : .jsp
+	}
+	
+	@RequestMapping("/met04")
+	public String method04() {
+		return "/cont05/view04"; // /WEB-INF/views//cont05/view04.jsp
+	}
+	
+	
+	// redirect
+	
+	@RequestMapping("/met05")
+	public String method05() {
+		
+		/* servlet 사용 시 */
+//		String location = request.getContextPath() + "/path";
+//		response.sendRedirect(location);
+		
+		/* spring mvc 사용 시 */
+		return "redirect:/cont05/met04";
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
