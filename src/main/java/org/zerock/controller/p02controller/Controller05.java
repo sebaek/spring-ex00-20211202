@@ -57,6 +57,9 @@ public class Controller05 {
 		return "redirect:/cont05/met04";
 	}
 	
+	// 할일 : /cont05/met06 으로 요청 왔을 때 /cont05/met04 로 redirect 되는 method06을 만들기
+	
+	
 }
 
 
