@@ -22,6 +22,14 @@ public class Controller06 {
 		
 		// 5
 	}
+	
+	// 할일 : 요청 경로 : /cont06/met03 
+	//        view name : /cont06/met03 
+	//        view에서 사용하는 attribute 명 : "myattr2"
+	//                          myattr2의 값 : "myvalue2"
+	// 가 되도록 method03 작성
+	// 또한 view도 작성해서 myattr2가 myvalue2를 출력하는 확인
+	
 }
 
 
