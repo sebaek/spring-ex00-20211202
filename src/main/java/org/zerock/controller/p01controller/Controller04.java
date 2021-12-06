@@ -18,6 +18,7 @@ import org.zerock.controller.p01controller.bean.Bean04;
 import org.zerock.controller.p01controller.bean.Bean05;
 import org.zerock.controller.p01controller.bean.Bean06;
 import org.zerock.controller.p01controller.bean.Bean07;
+import org.zerock.controller.p01controller.bean.Bean08;
 
 @Controller
 @RequestMapping("/cont04")
@@ -108,6 +109,12 @@ public class Controller04 {
 	@RequestMapping("/met12")
 	public void method12(Bean07 bean) {
 		System.out.println(bean);
+	}
+	
+	// /cont04/met13?name=trump&age=99&moved=1988-02-02&writed=2010-03-03T17:22:11
+	@RequestMapping("/met13")
+	public void method13(Bean08 bean) {
+		System.out.println(bean); // 모든 프로퍼티가 request param으로 부터 채워져서 출력되도록
 	}
 
 }
