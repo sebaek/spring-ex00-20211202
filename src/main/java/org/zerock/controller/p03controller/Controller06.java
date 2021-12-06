@@ -57,7 +57,7 @@ public class Controller06 {
 		bean.setName("donald");
 		
 		// 4.
-		//model.addAttribute("bean01", bean); // attribute의 이름이 클래스(type)의 이름과 같은 경우 생략 가능
+		//model.addAttribute("bean01", bean); // attribute의 이름이 클래스(type)의 이름(to lower camel case)과 같은 경우 생략 가능
 		model.addAttribute(bean);
 		
 		// 할일 : view (jsp) 를 만들어서 "bean01" attribute가 있는 지 확인) 
