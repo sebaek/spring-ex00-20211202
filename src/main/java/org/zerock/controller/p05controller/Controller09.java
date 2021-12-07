@@ -1,5 +1,7 @@
 package org.zerock.controller.p05controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,6 +66,15 @@ public class Controller09 {
 	public void method06(Integer id) {
 		System.out.println(mapper.getLastNameById(id));
 	}
+	
+	@RequestMapping("/met07")
+	public void method07() {
+		List<String> names = mapper.getCustomerNames();
+		
+		System.out.println(names);
+	}
+	
+	// method08 에서 직원들의 LastName 들 조회하고 콘솔에 출력
 }
 
 
