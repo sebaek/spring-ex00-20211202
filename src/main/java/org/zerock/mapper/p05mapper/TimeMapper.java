@@ -6,4 +6,7 @@ public interface TimeMapper {
 
 	@Select("SELECT NOW()")
 	public String getTime();
+	
+	@Select("SELECT CustomerName FROM Customers WHERE CustomerID = 1")
+	public String getCustomerName();
 }
