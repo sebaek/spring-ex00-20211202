@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.controller.p03controller.bean.Bean02;
 
 @Controller
 @RequestMapping("/cont07")
@@ -72,9 +73,33 @@ public class Controller07 {
 	// 응답 : redirect:/cont07/met10
 	// flash attribute : Bean02 객체를 전달
 	
+	@RequestMapping("/met09")
+	public String method09(RedirectAttributes rttr) {
+		Bean02 bean = new Bean02();
+		bean.setAddress("seoul");
+		bean.setCity("korea");
+		
+		rttr.addFlashAttribute("bean", bean);
+		
+		return "redirect:/cont07/met10";
+	}
+	
+	@RequestMapping("/met10")
+	public void method10() {
+		
+	}
 	
 
 }
+
+
+
+
+
+
+
+
+
 
 
 
