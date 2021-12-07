@@ -1,5 +1,7 @@
 package org.zerock.controller.p03controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -37,6 +39,20 @@ public class Controller07 {
 		rttr.addAttribute("country", "korea");
 		
 		return "redirect:/cont07/met04";
+	}
+	
+	@RequestMapping("/met05")
+	public String method05(HttpSession session) {
+		session.setAttribute("name", "trump");
+		
+		return "redirect:/cont07/met06";
+	}
+	
+	@RequestMapping("/met06")
+	public void method06(HttpSession session) {
+		System.out.println("cont07 met06 일함!");
+		System.out.println(session.getAttribute("name"));
+	
 	}
 	
 	
