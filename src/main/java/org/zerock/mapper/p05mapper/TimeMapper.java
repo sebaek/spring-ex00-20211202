@@ -12,4 +12,7 @@ public interface TimeMapper {
 	
 	@Select("SELECT LastName FROM Employees WHERE EmployeeID = 1")
 	public String getLastName();
+	
+	@Select("SELECT CustomerName FROM Customers WHERE CustomerID = #{id}")
+	public String getCustomerNameById(Integer id);
 }

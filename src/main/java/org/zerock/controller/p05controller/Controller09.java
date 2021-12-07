@@ -50,6 +50,13 @@ public class Controller09 {
 	public void method04(Model model) {
 		model.addAttribute("lastName", mapper.getLastName());
 	}
+	
+	@RequestMapping("/met05")
+	public void method05(Integer id) {
+		String name = mapper.getCustomerNameById(id);
+		
+		System.out.println(name);
+	}
 
 }
 
