@@ -23,6 +23,12 @@ public class Controller07 {
 	public void method02() {
 		System.out.println("cont07 met02 일함@@");
 	}
+	
+	// 첫번째 요청 주소 : /cont07/met03
+	// 위의 요청의 응답 : redirect:/cont07/met04
+	// 응답시 쿼리 스트링 ?id=99&city=seoul&country=korea
+	
+	// 메소드 method03 작성
 }
 
 
