@@ -45,6 +45,11 @@ public class Controller09 {
 	
 	// 작성할 메소드 Controller09#method04
 	//              TimeMapper#getLastName();
+	
+	@RequestMapping("/met04")
+	public void method04(Model model) {
+		model.addAttribute("lastName", mapper.getLastName());
+	}
 
 }
 

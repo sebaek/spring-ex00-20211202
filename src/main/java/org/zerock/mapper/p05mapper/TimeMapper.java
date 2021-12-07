@@ -9,4 +9,7 @@ public interface TimeMapper {
 	
 	@Select("SELECT CustomerName FROM Customers WHERE CustomerID = 1")
 	public String getCustomerName();
+	
+	@Select("SELECT LastName FROM Employees WHERE EmployeeID = 1")
+	public String getLastName();
 }
