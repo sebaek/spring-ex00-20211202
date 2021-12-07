@@ -15,4 +15,7 @@ public interface TimeMapper {
 	
 	@Select("SELECT CustomerName FROM Customers WHERE CustomerID = #{id}")
 	public String getCustomerNameById(Integer id);
+
+	@Select("SELECT LastName FROM Employees WHERE EmployeeID = #{id}")
+	public String getLastNameById(Integer id);
 }

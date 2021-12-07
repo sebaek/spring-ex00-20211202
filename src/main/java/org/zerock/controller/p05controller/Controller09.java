@@ -60,8 +60,10 @@ public class Controller09 {
 	
 	// method06 : request parameter "id"값으로 직원 테이블을 조회해서 
 	//            콘솔에 lastName 출력
-	
-
+	@RequestMapping("/met06")
+	public void method06(Integer id) {
+		System.out.println(mapper.getLastNameById(id));
+	}
 }
 
 
