@@ -57,6 +57,10 @@ public class Controller09 {
 		
 		System.out.println(name);
 	}
+	
+	// method06 : request parameter "id"값으로 직원 테이블을 조회해서 
+	//            콘솔에 lastName 출력
+	
 
 }
 
