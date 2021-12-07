@@ -67,6 +67,12 @@ public class Controller07 {
 	public void method08(Model model) {
 		System.out.println(model.asMap().get("address"));
 	}
+	
+	// 요청경로 : /cont07/met09
+	// 응답 : redirect:/cont07/met10
+	// flash attribute : Bean02 객체를 전달
+	
+	
 
 }
 
