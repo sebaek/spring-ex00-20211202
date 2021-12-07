@@ -25,7 +25,8 @@ public interface TimeMapper {
 	public List<String> getCustomerNames();
 	
 	// 직원 테이블의 LastName 들을 조회하는 쿼리를 실행하는 메소드(getLastNames) 작성
-	
+	@Select("SELECT LastName FROM Employees")
+	public List<String> getLastNames();
 }
 
 

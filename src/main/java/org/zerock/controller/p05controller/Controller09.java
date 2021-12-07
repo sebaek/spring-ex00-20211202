@@ -75,6 +75,11 @@ public class Controller09 {
 	}
 	
 	// method08 에서 직원들의 LastName 들 조회하고 콘솔에 출력
+	@RequestMapping("/met08")
+	public void method08() {
+		System.out.println(mapper.getLastNames());
+	}
+	
 }
 
 
