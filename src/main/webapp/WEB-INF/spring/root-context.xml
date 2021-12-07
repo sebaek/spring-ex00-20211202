@@ -4,5 +4,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	
+	<bean id="dataSource" class="org.mariadb.jdbc.MariaDbPoolDataSource">
+		<property name="url" value=""></property>
+		<property name="user" value=""></property>
+		<property name="password" value=""></property>
+		<property name="maxPoolSize" value="1"></property>
+	</bean>
 </beans>
