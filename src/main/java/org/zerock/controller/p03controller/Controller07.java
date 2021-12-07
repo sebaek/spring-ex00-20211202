@@ -29,6 +29,17 @@ public class Controller07 {
 	// 응답시 쿼리 스트링 ?id=99&city=seoul&country=korea
 	
 	// 메소드 method03 작성
+	
+	@RequestMapping("/met03")
+	public String method03(RedirectAttributes rttr) {
+		rttr.addAttribute("id", 99);
+		rttr.addAttribute("city", "seoul");
+		rttr.addAttribute("country", "korea");
+		
+		return "redirect:/cont07/met04";
+	}
+	
+	
 }
 
 
