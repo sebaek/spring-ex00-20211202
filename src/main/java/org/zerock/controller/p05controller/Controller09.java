@@ -31,10 +31,21 @@ public class Controller09 {
 	
 	@RequestMapping("/met03")
 	public void method03(Model model) {
+		
+		// 3. business logic
 		String name = mapper.getCustomerName();
 		
+		// 4. add attribute
 		model.addAttribute("name", name);
 	}
+	
+	// 요청 경로 : /cont09/met04
+	// 실행 쿼리 : SELECT LastName FROM Employees WHERE EmployeeID = 1
+	// 뷰 : /cont09/met04.jsp 에 LastName 출력
+	
+	// 작성할 메소드 Controller09#method04
+	//              TimeMapper#getLastName();
+
 }
 
 
