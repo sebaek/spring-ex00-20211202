@@ -1,5 +1,7 @@
 package org.zerock.controller.p05controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +33,17 @@ public class Controller10 {
 		
 		Bean09 bean = mapper.getEmployeeNameOne();
 		System.out.println(bean);
+	}
+	
+	@RequestMapping("/met03")
+	public void method03() {
+		List<Bean09> list = mapper.getEmployeeNameList();
+		
+//		list.forEach(n -> System.out.println(n));
+		
+		for (Bean09 n : list) {
+			System.out.println(n);
+		}
 	}
 }
 

@@ -27,7 +27,30 @@
 	WHERE 
 	      EmployeeID = 3
 	</select>
+	
+	<select id="getEmployeeNameList" 
+		resultType="org.zerock.controller.p05controller.bean.Bean09">
+	SELECT 
+		LastName,
+		FirstName
+	FROM
+		Employees
+	</select>
+	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
