@@ -1,5 +1,7 @@
 package org.zerock.controller.p05controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +27,16 @@ public class Controller11 {
 		String customerName = mapper.getCustomerNameById(id);
 		
 		System.out.println(customerName);
+	}
+	
+	// /cont11/met03?category=condiments
+	@RequestMapping("/met03")
+	public void method03(String category) {
+		List<String> productNames = mapper.getProductNamesByCategory(category);
+		
+		for (String p : productNames) {
+			System.out.println(p);
+		}
 	}
 }
 

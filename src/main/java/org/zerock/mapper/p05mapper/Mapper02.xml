@@ -15,4 +15,10 @@
 	FROM Customers
 	WHERE customerID = #{id}
 	</select>
+	
+	<select id="getProductNamesByCategory" resultType="string">
+	SELECT p.ProductName 
+	FROM Products p JOIN Categories c ON p.CategoryID = c.CategoryID
+	WHERE c.CategoryName = #{category}
+	</select>
 </mapper>
