@@ -38,6 +38,16 @@ public class Controller11 {
 			System.out.println(p);
 		}
 	}
+	
+	// /cont11/met04?category=Beverages&price=10 
+	@RequestMapping("/met04")
+	public void method04(String category, Double price) {
+		List<String> productNames = mapper.getProductNamesByCategoryAndPrice(category, price);
+		
+		for (String p : productNames) {
+			System.out.println(p);
+		}
+	}
 }
 
 

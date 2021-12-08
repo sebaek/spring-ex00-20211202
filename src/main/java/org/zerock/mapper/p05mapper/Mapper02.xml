@@ -21,4 +21,27 @@
 	FROM Products p JOIN Categories c ON p.CategoryID = c.CategoryID
 	WHERE c.CategoryName = #{category}
 	</select>
+	
+	<select id="getProductNamesByCategoryAndPrice" resultType="string">
+	<![CDATA[      
+	SELECT p.ProductName 
+	FROM Products p JOIN Categories c ON p.CategoryID = c.CategoryID
+	WHERE c.CategoryName = #{category} AND p.price < #{price}
+	]]>
+	</select>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
