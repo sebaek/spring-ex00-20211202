@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerock.controller.p05controller.bean.Bean09;
 import org.zerock.controller.p05controller.bean.Bean10;
+import org.zerock.controller.p05controller.bean.Bean13;
+import org.zerock.controller.p05controller.bean.Bean14;
 import org.zerock.mapper.p05mapper.TimeMapper;
 
 import lombok.Setter;
@@ -114,6 +116,24 @@ public class Controller09 {
 		// TODO: mapper에 getCustomerById 메소드 (Bean14 리턴) 만들기
 		//      Bean14빈의 property가 Customers 테이블의 컬럼과 매치되도록 작성
 		System.out.println(mapper.getCustomerById(id));
+	}
+	
+	@RequestMapping("/met15")
+	public void method15() {
+		List<Bean14> list = mapper.getCustomers();
+		
+		for (Bean14 item : list) {
+			System.out.println(item);
+		}
+	}
+	
+	@RequestMapping("/met16")
+	public void method16() {
+		List<Bean13> list = mapper.getEmployees();
+		
+		for (Bean13 item : list) {
+			System.out.println(item);
+		}
 	}
 }
 

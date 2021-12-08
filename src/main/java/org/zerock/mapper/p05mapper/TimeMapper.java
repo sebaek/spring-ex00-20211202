@@ -54,6 +54,11 @@ public interface TimeMapper {
 			+ "FROM Customers "
 			+ "WHERE CustomerID = #{id}")
 	public Bean14 getCustomerById(Integer id);
+	
+	@Select("SELECT CustomerID, CustomerName, ContactName,"
+			+ " City, Address, Country, PostalCode "
+			+ "FROM Customers")
+	public List<Bean14> getCustomers();
 }
 
 
