@@ -98,6 +98,11 @@ public class Controller09 {
 	public void method11() {
 		System.out.println(mapper.getCustomerInfo());
 	}
+	
+	@RequestMapping("/met12")
+	public void method12() {
+		System.out.println(mapper.getEmployeeInfo()); // id, last name, first name 출력
+	}
 }
 
 
