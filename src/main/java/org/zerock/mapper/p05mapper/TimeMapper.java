@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 import org.zerock.controller.p05controller.bean.Bean09;
+import org.zerock.controller.p05controller.bean.Bean10;
+import org.zerock.controller.p05controller.bean.Bean11;
 
 public interface TimeMapper {
 
@@ -32,8 +34,11 @@ public interface TimeMapper {
 	@Select("SELECT EmployeeID, LastName, FirstName FROM Employees WHERE EmployeeID = 1")
 	public Bean09 getEmployeeName();
 	
-	@Select("SELECT CustomerName, ContactName FROM Customers WHERE CustomerID = 1")
+	@Select("SELECT customerName, contactName FROM Customers WHERE CustomerID = 1")
 	public Bean10 getName();
+	
+	@Select("SELECT customerID AS id, customerName FROM Customers WHERE CustomerID = 1")
+	public Bean11 getCustomerInfo();
 }
 
 

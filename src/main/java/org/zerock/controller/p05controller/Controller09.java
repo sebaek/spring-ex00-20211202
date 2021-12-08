@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerock.controller.p05controller.bean.Bean09;
+import org.zerock.controller.p05controller.bean.Bean10;
 import org.zerock.mapper.p05mapper.TimeMapper;
 
 import lombok.Setter;
@@ -91,6 +92,11 @@ public class Controller09 {
 	public void method10() {
 		Bean10 name = mapper.getName();
 		System.out.println(name); // 1번 고객의 CustomerName, ContactName이 출력되도록 코드 작성
+	}
+	
+	@RequestMapping("/met11")
+	public void method11() {
+		System.out.println(mapper.getCustomerInfo());
 	}
 }
 
