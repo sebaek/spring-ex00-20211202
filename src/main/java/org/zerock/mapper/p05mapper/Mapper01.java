@@ -14,4 +14,6 @@ public interface Mapper01 {
 	public List<Bean09> getEmployeeNameList();
 	
 	public List<Bean16> getSupplierList();
+	
+	public String getEmployeeLastNameOne();
 }

@@ -58,4 +58,31 @@ public class Controller10 {
 			System.out.println(s);
 		}
 	}
+	
+	@RequestMapping("/met05")
+	public void method05() {
+		System.out.println(mapper.getEmployeeLastNameOne());
+	}
+	
+	@RequestMapping("/met06")
+	public void method06() {
+		System.out.println(mapper.getEmployeeFirstNameOne());// 
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

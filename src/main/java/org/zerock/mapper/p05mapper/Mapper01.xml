@@ -45,6 +45,16 @@
 	FROM
 	       Suppliers
 	</select>
+	
+	<select id="getEmployeeLastNameOne"
+		resultType="string">
+	SELECT
+		LastName
+	FROM
+		Employees
+	WHERE
+		EmployeeID = 1
+	</select>
 </mapper>
 
 
