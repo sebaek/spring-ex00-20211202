@@ -37,7 +37,8 @@
 		Employees
 	</select>
 	
-	<select id="getSupplierList">
+	<select id="getSupplierList"
+		resultType="org.zerock.controller.p05controller.bean.Bean16">
 	SELECT
 	       SupplierName,
 	       ContactName

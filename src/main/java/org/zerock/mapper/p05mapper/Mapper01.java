@@ -12,4 +12,6 @@ public interface Mapper01 {
 	public Bean09 getEmployeeNameOne();
 	
 	public List<Bean09> getEmployeeNameList();
+	
+	public List<Bean16> getSupplierList();
 }
