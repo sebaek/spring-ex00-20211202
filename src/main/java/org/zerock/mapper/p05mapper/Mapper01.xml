@@ -37,6 +37,13 @@
 		Employees
 	</select>
 	
+	<select id="getSupplierList">
+	SELECT
+	       SupplierName,
+	       ContactName
+	FROM
+	       Suppliers
+	</select>
 </mapper>
 
 
