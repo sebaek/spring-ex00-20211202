@@ -10,6 +10,7 @@ import org.zerock.controller.p05controller.bean.Bean09;
 import org.zerock.controller.p05controller.bean.Bean10;
 import org.zerock.controller.p05controller.bean.Bean13;
 import org.zerock.controller.p05controller.bean.Bean14;
+import org.zerock.controller.p05controller.bean.Bean15;
 import org.zerock.mapper.p05mapper.TimeMapper;
 
 import lombok.Setter;
@@ -132,6 +133,24 @@ public class Controller09 {
 		List<Bean13> list = mapper.getEmployees();
 		
 		for (Bean13 item : list) {
+			System.out.println(item);
+		}
+	}
+	
+	@RequestMapping("/met17")
+	public void method17() {
+		List<Bean15> list = mapper.getProductsInfo();
+		
+		for (Bean15 item : list) {
+			System.out.println(item);
+		}
+	}
+	
+	@RequestMapping("/met18")
+	public void method18() {
+		List<Bean15> list = mapper.getProductsInfo2();
+		
+		for (Bean15 item : list) {
 			System.out.println(item);
 		}
 	}
