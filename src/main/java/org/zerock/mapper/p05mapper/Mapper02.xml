@@ -9,4 +9,10 @@
 	FROM Employees
 	WHERE EmployeeID = #{id}
 	</select>
+	
+	<select id="getCustomerNameById" resultType="string">
+	SELECT customerName
+	FROM Customers
+	WHERE customerID = #{id}
+	</select>
 </mapper>

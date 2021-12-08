@@ -4,4 +4,6 @@ public interface Mapper02 {
 
 	String getLastNameById(Integer id);
 
+	String getCustomerNameById(Integer id);
+
 }
