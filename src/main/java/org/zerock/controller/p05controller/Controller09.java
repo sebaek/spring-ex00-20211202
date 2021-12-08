@@ -103,6 +103,18 @@ public class Controller09 {
 	public void method12() {
 		System.out.println(mapper.getEmployeeInfo()); // id, last name, first name 출력
 	}
+	
+	@RequestMapping("/met13")
+	public void method13(Integer id) {
+		System.out.println(mapper.getEmployeeById(id));
+	}
+	
+	@RequestMapping("/met14")
+	public void method14(Integer id) {
+		// TODO: mapper에 getCustomerById 메소드 (Bean14 리턴) 만들기
+		//      Bean14빈의 property가 Customers 테이블의 컬럼과 매치되도록 작성
+		System.out.println(mapper.getCustomerById(id));
+	}
 }
 
 

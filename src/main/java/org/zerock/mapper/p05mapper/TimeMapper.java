@@ -7,6 +7,7 @@ import org.zerock.controller.p05controller.bean.Bean09;
 import org.zerock.controller.p05controller.bean.Bean10;
 import org.zerock.controller.p05controller.bean.Bean11;
 import org.zerock.controller.p05controller.bean.Bean12;
+import org.zerock.controller.p05controller.bean.Bean13;
 
 public interface TimeMapper {
 
@@ -41,8 +42,11 @@ public interface TimeMapper {
 	@Select("SELECT customerID AS id, customerName FROM Customers WHERE CustomerID = 1")
 	public Bean11 getCustomerInfo();
 	
-	@Select("SELECT EmployeeID, LastName, FirstName FROM Employees WHERE EmployeeID = 2")
+	@Select("SELECT EmployeeID id, LastName lname, FirstName fname FROM Employees WHERE EmployeeID = 2")
 	public Bean12 getEmployeeInfo();
+	
+	@Select("SELECT EmployeeID, LastName, FirstName, BirthDate, Photo, Notes FROM Employees WHERE EmployeeID = #{id}")
+	public Bean13 getEmployeeById(Integer id);
 }
 
 
