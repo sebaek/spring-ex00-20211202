@@ -55,6 +55,12 @@
 	WHERE
 		EmployeeID = 1
 	</select>
+	
+	<select id="getEmployeeFirstNameOne" resultType="string">
+	SELECT FirstName 
+	FROM Employees 
+	WHERE EmployeeID = 1
+	</select>
 </mapper>
 
 
