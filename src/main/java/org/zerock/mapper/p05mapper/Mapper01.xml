@@ -16,4 +16,8 @@
 	WHERE
 	       SupplierID = 10
 	</select>
+	
+	<select>
+	
+	</select>
 </mapper>
