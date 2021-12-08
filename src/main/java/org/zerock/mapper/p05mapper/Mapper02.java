@@ -14,4 +14,6 @@ public interface Mapper02 {
 
 	List<String> getProductNamesByCategoryAndPrice(@Param("category") String category, @Param("price") Double price);
 
+	List<String> getSupplierNamesByCityAndCountry(@Param("city") String city, @Param("country") String country);
+
 }

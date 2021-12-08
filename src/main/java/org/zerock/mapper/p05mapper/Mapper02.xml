@@ -29,6 +29,12 @@
 	WHERE c.CategoryName = #{category} AND p.price < #{price}
 	]]>
 	</select>
+	
+	<select id="getSupplierNamesByCityAndCountry" resultType="string">
+	SELECT SupplierName
+	FROM Suppliers
+	WHERE City = #{city} AND Country = #{country}
+	</select>
 </mapper>
 
 
