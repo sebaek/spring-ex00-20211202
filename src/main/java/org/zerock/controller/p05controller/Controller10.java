@@ -3,6 +3,7 @@ package org.zerock.controller.p05controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.zerock.controller.p05controller.bean.Bean09;
 import org.zerock.mapper.p05mapper.Mapper01;
 
 import lombok.Setter;
@@ -27,6 +28,9 @@ public class Controller10 {
 		// Mapper01.xml 에 새 <select> 요소 작성
 		
 		// 이 메소드에서 getEmployeeNameOne 메소드 실행 결과(Bean09) 출력
+		
+		Bean09 bean = mapper.getEmployeeNameOne();
+		System.out.println(bean);
 	}
 }
 

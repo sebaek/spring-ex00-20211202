@@ -17,7 +17,17 @@
 	       SupplierID = 10
 	</select>
 	
-	<select>
-	
+	<select id="getEmployeeNameOne" 
+		resultType="org.zerock.controller.p05controller.bean.Bean09">
+	SELECT 
+	      LastName, 
+	      FirstName 
+	FROM 
+	      Employees 
+	WHERE 
+	      EmployeeID = 3
 	</select>
 </mapper>
+
+
+
