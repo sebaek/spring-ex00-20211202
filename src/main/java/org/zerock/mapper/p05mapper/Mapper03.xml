@@ -66,6 +66,10 @@
 	DELETE FROM Customers WHERE CustomerId = #{id}
 	</delete>
 	
+	<delete id="deleteSupplier">
+	DELETE FROM Suppliers WHERE SupplierId = #{id}
+	</delete>
+	
 </mapper>
 
 

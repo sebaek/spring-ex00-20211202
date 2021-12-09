@@ -149,7 +149,10 @@ public class Controller12 {
 	}
 	
 	// TODO : delete Supplier by id
-	
+	@RequestMapping("/met10")
+	public void method10(Integer id) {
+		int cnt = mapper.deleteSupplier(id);
+	}
 }
 
 
