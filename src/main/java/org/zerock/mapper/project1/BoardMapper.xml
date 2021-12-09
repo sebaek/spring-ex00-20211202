@@ -34,9 +34,9 @@
 	
 	<insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 	INSERT INTO
-		Board (title, content, writer, inserted, updated)
+		Board (title, content, writer)
 	VALUES
-		(#{title}, #{content}, #{writer}, #{inserted}, #{updated})
+		(#{title}, #{content}, #{writer})
 		
 	</insert>
 	
