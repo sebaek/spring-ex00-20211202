@@ -17,4 +17,6 @@ public interface Mapper03 {
 	public int insertSupplier2(Bean18 bean);
 
 	public int insertCustomer3(Bean17 bean);
+
+	public int insertSupplier3(Bean18 bean);
 }

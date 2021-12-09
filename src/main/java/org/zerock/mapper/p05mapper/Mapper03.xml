@@ -29,6 +29,11 @@
 	INSERT INTO Customers (CustomerName, ContactName, Address, PostalCode, Country, City)
 	VALUES (#{customerName}, #{contactName}, #{address}, #{postalCode}, #{country}, #{city})
 	</insert>
+	
+	<insert id="insertSupplier3" useGeneratedKeys="true" keyProperty="supplierID" keyColumn="supplierID">
+	INSERT INTO Suppliers (SupplierName, ContactName, Address, PostalCode, Country, City, Phone)
+	VALUES (#{supplierName}, #{contactName}, #{address}, #{postalCode}, #{country}, #{city}, #{phone})
+	</insert>
 </mapper>
 
 
