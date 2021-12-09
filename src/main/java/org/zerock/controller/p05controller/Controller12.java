@@ -49,6 +49,17 @@ public class Controller12 {
 		mapper.insertCustomer2(bean);
 		
 	}
+	
+	@RequestMapping("/met04")
+	public void method04() {
+		// 2. bean작성 (Bean18)
+		
+		// 3. mapper 실행
+		mapper.insertSupplier2(bean);
+		
+	}
+	
+	
 }
 
 
