@@ -9,3 +9,5 @@ CREATE TABLE Board (
 );
 
 DESC Board;
+
+SELECT * FROM Board ORDER BY id DESC;
