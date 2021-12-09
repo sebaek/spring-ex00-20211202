@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerock.controller.p05controller.bean.Bean17;
+import org.zerock.controller.p05controller.bean.Bean18;
 import org.zerock.mapper.p05mapper.Mapper03;
 
 import lombok.Setter;
@@ -53,6 +54,15 @@ public class Controller12 {
 	@RequestMapping("/met04")
 	public void method04() {
 		// 2. bean작성 (Bean18)
+		Bean18 bean = new Bean18();
+		bean.setAddress("seoul");
+		bean.setCity("busan");
+		bean.setCountry("korea");
+		bean.setPostalCode("1111");
+		bean.setPhone("00000");
+		bean.setContactName("donald");
+		bean.setSupplierName("trump");
+		
 		
 		// 3. mapper 실행
 		mapper.insertSupplier2(bean);
