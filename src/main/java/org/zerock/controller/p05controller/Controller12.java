@@ -3,6 +3,7 @@ package org.zerock.controller.p05controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.zerock.controller.p05controller.bean.Bean17;
 import org.zerock.mapper.p05mapper.Mapper03;
 
 import lombok.Setter;
@@ -30,6 +31,22 @@ public class Controller12 {
 		
 		int cnt = mapper.insertSupplier(supplierName, contactName);
 		System.out.println(cnt);
+		
+	}
+	
+	@RequestMapping("/met03")
+	public void method03() {
+		// 2. request 분석/가공
+		Bean17 bean = new Bean17();
+		bean.setContactName("peter");
+		bean.setCustomerName("spiderman");
+		bean.setAddress("queens");
+		bean.setCity("ny");
+		bean.setPostalCode("2222");
+		bean.setCountry("usa");
+		
+		// 3. business logic
+		mapper.insertCustomer2(bean);
 		
 	}
 }
