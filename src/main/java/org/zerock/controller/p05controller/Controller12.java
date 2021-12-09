@@ -70,7 +70,49 @@ public class Controller12 {
 	}
 	
 	
+	@RequestMapping("/met05")
+	public void method05() {
+		// 2
+		Bean17 bean = new Bean17();
+		bean.setAddress("gangnam");
+		bean.setCity("seoul");
+		bean.setContactName("marvel");
+		bean.setCustomerName("danvers");
+		bean.setCountry("france");
+		bean.setPostalCode("99999");
+		
+		// 3.
+		// insert 하기 전 id
+		System.out.println(bean.getId()); // null or 0
+		
+		mapper.insertCustomer3(bean);
+		
+		System.out.println(bean.getId()); // key
+	}
+	
+	@RequestMapping("/met06") 
+	public void method06() {
+		// 2
+		Bean18 bean = new Bean18();
+		bean.setAddress("yeoksam");
+		bean.setCity("incheon");
+		bean.setContactName("deadpool");
+		bean.setSupplierName("wade");
+		bean.setCountry("uk");
+		bean.setPostalCode("3333");
+		bean.setPhone("111");
+		
+		// 3
+		System.out.println(bean.getSupplierID()); // null or 0
+		mapper.insertSupplier3(bean);
+		System.out.println(bean.getSupplierID()); // key
+	}
+	
+	
 }
+
+
+
 
 
 

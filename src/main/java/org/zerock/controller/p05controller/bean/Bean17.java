@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Bean17 {
-	private Integer customerID;
+	private Integer id;
 	private String customerName;
 	private String contactName;
 	private String city;
