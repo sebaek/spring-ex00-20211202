@@ -62,6 +62,9 @@
 		SupplierID = #{supplierID}
 	</update>
 	
+	<delete id="deleteCustomer">
+	DELETE FROM Customers WHERE CustomerId = #{id}
+	</delete>
 	
 </mapper>
 
