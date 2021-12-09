@@ -48,6 +48,20 @@
 	   CustomerID = #{id}
 	</update>
 	
+	<update id="updateSupplier">
+	UPDATE Suppliers
+	SET
+		SupplierName = #{supplierName},
+		ContactName = #{contactName},
+		Address = #{address},
+		City = #{city},
+		PostalCode = #{postalCode},
+		Country = #{country},
+		Phone = #{phone}
+	WHERE
+		SupplierID = #{supplierID}
+	</update>
+	
 	
 </mapper>
 

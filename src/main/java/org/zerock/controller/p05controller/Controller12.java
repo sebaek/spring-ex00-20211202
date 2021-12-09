@@ -126,8 +126,22 @@ public class Controller12 {
 		System.out.println(cnt);
 	}
 	
-	// TODO: update Supplier 
-	
+	@RequestMapping("/met08")
+	public void method08() {
+		Bean18 bean = new Bean18();
+		bean.setSupplierID(45);
+		bean.setAddress("gangnam");
+		bean.setCity("busan");
+		bean.setContactName("wolverine");
+		bean.setCountry("canada");
+		bean.setPhone("0000000");
+		bean.setPostalCode("99999");
+		bean.setSupplierName("logan");
+		
+		int cnt = mapper.updateSupplier(bean);
+		
+		
+	}
 	
 }
 
