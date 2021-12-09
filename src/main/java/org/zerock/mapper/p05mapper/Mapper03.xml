@@ -34,6 +34,21 @@
 	INSERT INTO Suppliers (SupplierName, ContactName, Address, PostalCode, Country, City, Phone)
 	VALUES (#{supplierName}, #{contactName}, #{address}, #{postalCode}, #{country}, #{city}, #{phone})
 	</insert>
+	
+	<update id="updateCustomer">
+	UPDATE Customers
+	SET
+	   CustomerName = #{customerName},
+	   ContactName = #{contactName},
+	   Address = #{address},
+	   PostalCode = #{postalCode},
+	   Country = #{country},
+	   City = #{city}
+	WHERE
+	   CustomerID = #{id}
+	</update>
+	
+	
 </mapper>
 
 

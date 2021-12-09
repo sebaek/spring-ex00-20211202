@@ -109,6 +109,26 @@ public class Controller12 {
 	}
 	
 	
+	@RequestMapping("/met07")
+	public void method07() {
+		// 2
+		Bean17 bean = new Bean17();
+		bean.setId(117);
+		bean.setContactName("widow");
+		bean.setCustomerName("nat");
+		bean.setAddress("jongro");
+		bean.setCity("dokdo");
+		bean.setCountry("korea");
+		bean.setPostalCode("77777");
+		
+		// 3
+		int cnt = mapper.updateCustomer(bean);
+		System.out.println(cnt);
+	}
+	
+	// TODO: update Supplier 
+	
+	
 }
 
 
