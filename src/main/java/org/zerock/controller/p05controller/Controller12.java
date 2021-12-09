@@ -22,6 +22,16 @@ public class Controller12 {
 		int cnt = mapper.insertCustomer(customerName, contactName);
 		System.out.println(cnt);
 	}
+	
+	@RequestMapping("/met02")
+	public void method02() {
+		String supplierName = "captain";
+		String contactName = "steve";
+		
+		int cnt = mapper.insertSupplier(supplierName, contactName);
+		System.out.println(cnt);
+		
+	}
 }
 
 
