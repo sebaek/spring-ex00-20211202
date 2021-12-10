@@ -49,7 +49,7 @@ public class BoardController {
 	public String modify(BoardVO board, RedirectAttributes rttr) {
 		
 		if (service.modify(board)) {
-			rttr.addFlashAttribute("result", "success");
+			rttr.addFlashAttribute("result", board.getId() + "번 게시글이 수정되었습니다.");
 		}
 
 		// 게시물 조회로 redirect
@@ -74,7 +74,7 @@ public class BoardController {
 		service.register(board);
 		
 		// 4. add attribute
-		rttr.addAttribute("result", board.getId());
+		rttr.addFlashAttribute("result", board.getId() + "번 게시글이 등록되었습니다.");
 		
 		// 5. forward / redirect
 		// 책: 목록으로 redirect
@@ -85,7 +85,7 @@ public class BoardController {
 	public String remove(@RequestParam("id") Integer id, RedirectAttributes rttr) {
 		
 		if (service.remove(id)) {
-			rttr.addFlashAttribute("result", "success");
+			rttr.addFlashAttribute("result", id + "번 게시글이 삭제되었습니다.");
 		}
 		
 		return "redirect:/board/list";
