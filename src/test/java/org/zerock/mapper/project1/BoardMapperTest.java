@@ -3,6 +3,7 @@ package org.zerock.mapper.project1;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -83,8 +84,42 @@ public class BoardMapperTest {
 		assertEquals(newContent, updatedVO.getContent());
 	}
 	
+	@Test
+	public void insertAndDeleteTest() {
+		BoardVO vo = new BoardVO();
+		vo.setTitle("삭제용 제목");
+		vo.setContent("삭제용 본문");
+		vo.setWriter("tester");
+		
+		int cnt = mapper.insert(vo);
+		
+		assertEquals(1, cnt);
+		
+		cnt = mapper.delete(vo.getId());
+		
+		assertEquals(1, cnt);
+		
+		BoardVO deleted = mapper.read(vo.getId());
+		assertNull(deleted);
+	}
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
