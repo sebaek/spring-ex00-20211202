@@ -54,5 +54,37 @@ public class BoardMapperTest {
 		assertEquals(vo.getWriter(), lastInserted.getWriter());
 
 	}
+	
+	@Test
+	public void updateTest() {
+		BoardVO vo = new BoardVO();
+		vo.setTitle("test 용 제목" + Math.random());
+		vo.setContent("테스트 용 본문" + Math.random());
+		vo.setWriter("tester");
+
+		mapper.insert(vo);
+
+		assertNotNull(vo.getId());
+		assertNotEquals(0, vo.getId().intValue());
+		
+		String newTitle = "update 용 제목" + Math.random();
+		String newContent = "update 용 본문" + Math.random();
+
+		vo.setTitle(newTitle);
+		vo.setContent(newContent);
+		
+		mapper.update(vo);
+		
+		BoardVO updatedVO = mapper.read(vo.getId());
+		
+		assertEquals(newTitle, updatedVO.getTitle());
+		assertEquals(newContent, updatedVO.getContent());
+	}
+	
 
 }
+
+
+
+
+
