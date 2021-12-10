@@ -11,3 +11,25 @@ CREATE TABLE Board (
 DESC Board;
 
 SELECT * FROM Board ORDER BY id DESC;
+
+DELETE FROM Board WHERE 
+(id) IN (SELECT id 
+		FROM Board 
+        WHERE inserted IS NULL);
+        
+DELETE FROM Board WHERE updated IS NULL;
+        
+ALTER TABLE Board MODIFY COLUMN inserted DATETIME NOT NULL DEFAULT NOW();
+ALTER TABLE Board MODIFY COLUMN updated DATETIME NOT NULL DEFAULT NOW();
+
+
+
+
+
+
+
+
+
+
+
+

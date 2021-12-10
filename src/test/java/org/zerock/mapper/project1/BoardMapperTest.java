@@ -52,6 +52,8 @@ public class BoardMapperTest {
 		assertEquals(vo.getTitle(), lastInserted.getTitle());
 		assertEquals(vo.getContent(), lastInserted.getContent());
 		assertEquals(vo.getWriter(), lastInserted.getWriter());
+		assertNotNull(lastInserted.getInserted());
+		assertNotNull(lastInserted.getUpdated());
 
 	}
 	
