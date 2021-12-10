@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="b" tagdir="/WEB-INF/tags/board" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,6 +15,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+  <b:navBar></b:navBar>
 
   <!-- .container>.row>.col>h1{게시물 목록} -->
   <div class="container">
