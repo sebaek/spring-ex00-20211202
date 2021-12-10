@@ -38,11 +38,28 @@ public class BoardController {
 	}
 	
 	// /board/get?id=10
-	@GetMapping("/get")
+	@GetMapping({"/get", "/modify"})
 	public void get(@RequestParam("id") Integer id, Model model) {
 		BoardVO board = service.get(id);
 		
 		model.addAttribute("board", board);
+	}
+	
+	@PostMapping("/modify")
+	public String modify(BoardVO board, RedirectAttributes rttr) {
+		
+		if (service.modify(board)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+
+		// 게시물 조회로 redirect
+		/*
+		rttr.addAttribute("id", board.getId());
+		return "redirect:/board/get";
+		*/
+		
+		// 목록 조회로 redirect
+		return "redirect:/board/list";
 	}
 	
 	@GetMapping("/register")
@@ -63,6 +80,8 @@ public class BoardController {
 		// 책: 목록으로 redirect
 		return "redirect:/board/list";
 	}
+	
+
 }
 
 
