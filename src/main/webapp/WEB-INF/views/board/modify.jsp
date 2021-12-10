@@ -22,7 +22,7 @@
       <div class="col">
         <h1>게시물 수정</h1>
         <!-- form>.form-group*3>label[for=input$]+input.form-control#input$ -->
-        <form method="post">
+        <form id="modifyForm" method="post">
           <!-- input:hidden[value][name=id] -->
           <input type="hidden" name="id" value="${board.id }">
           <div class="form-group">
@@ -38,7 +38,9 @@
             <input type="text" class="form-control" id="input3" name="writer" value="${board.writer }" readonly>
           </div>
 
-          <button class="btn btn-outline-primary" type="submit">수정</button>
+          <button id="modifySubmitButton" class="btn btn-outline-primary" type="submit">수정</button>
+          <!-- button.btn.btn-outline-danger{삭제} -->
+          <button id="removeSubmitButton" class="btn btn-outline-danger" >삭제</button>
         </form>
       </div>
     </div>
@@ -46,6 +48,20 @@
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+  
+  <script>
+  $(document).ready(function() {
+    $("#removeSubmitButton").click(function(e) {
+      e.preventDefault(); // 기본 동작을 진행하지 않도록 함.
+      $("#modifyForm").attr("action", "remove").submit();
+    });
+    
+    $("#modifySubmitButton").click(function(e) {
+      e.preventDefault();
+      $("#modifyForm").attr("action", "modify").submit();
+    });
+  });
+  </script>  
 </body>
 </html>
 
