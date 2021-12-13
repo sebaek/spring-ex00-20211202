@@ -24,23 +24,23 @@
 		<div class="col">
 			<h1>회원 가입</h1>
       
-            <!-- form>.form-group*4>label[for=input$]+input.form-control#input$[readonly]^button.btn.btn-outline-primary{가입} -->
-            <form action="">
+            <!-- form>.form-group*4>label[for=input$]+input.form-control#input$[required]^button.btn.btn-outline-primary{가입} -->
+            <form method="post">
             	<div class="form-group">
-            		<label for="input1"></label>
-            		<input type="text" class="form-control" id="input1" readonly="">
+            		<label for="input1">아이디</label>
+            		<input type="text" class="form-control" id="input1" required name="id">
             	</div>
             	<div class="form-group">
-            		<label for="input2"></label>
-            		<input type="text" class="form-control" id="input2" readonly="">
+            		<label for="input2">패스워드</label>
+            		<input type="text" class="form-control" id="input2" required name="password">
             	</div>
             	<div class="form-group">
-            		<label for="input3"></label>
-            		<input type="text" class="form-control" id="input3" readonly="">
+            		<label for="input3">이메일</label>
+            		<input type="email" class="form-control" id="input3" required name="email">
             	</div>
             	<div class="form-group">
-            		<label for="input4"></label>
-            		<input type="text" class="form-control" id="input4" readonly="">
+            		<label for="input4">주소</label>
+            		<input type="text" class="form-control" id="input4" required name="address">
             	</div>
             	<button class="btn btn-outline-primary">가입</button>
             </form>
