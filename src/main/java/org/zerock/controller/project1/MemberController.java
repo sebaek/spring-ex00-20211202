@@ -121,6 +121,26 @@ public class MemberController {
 
 		return "redirect:/board/list";
 	}
+	
+	@PostMapping("/remove")
+	public String remove(String id, HttpSession session, RedirectAttributes rttr) {
+		MemberVO vo = (MemberVO) session.getAttribute("loggedInMember");
+
+		// 로그아웃 상태
+		if (vo == null) {
+			return "redirect:/member/login";
+		}
+		
+		// 로그인된 상태
+		service.remove(id);
+		
+		session.invalidate();
+		
+		rttr.addFlashAttribute("result", "회원 탈퇴하였습니다");
+		
+		return "redirect:/board/list";
+		
+	}
 }
 
 
