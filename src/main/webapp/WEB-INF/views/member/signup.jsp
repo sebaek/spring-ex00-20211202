@@ -24,23 +24,29 @@
 		<div class="col">
 			<h1>회원 가입</h1>
       
+            <c:if test="${not empty alertMessage}">
+              <div class="alert alert-warning">
+                ${alertMessage }
+              </div>
+            </c:if>
+      
             <!-- form>.form-group*4>label[for=input$]+input.form-control#input$[required]^button.btn.btn-outline-primary{가입} -->
             <form method="post">
             	<div class="form-group">
             		<label for="input1">아이디</label>
-            		<input type="text" class="form-control" id="input1" required name="id">
+            		<input type="text" class="form-control" id="input1" required name="id" value="${member.id }">
             	</div>
             	<div class="form-group">
             		<label for="input2">패스워드</label>
-            		<input type="text" class="form-control" id="input2" required name="password">
+            		<input type="text" class="form-control" id="input2" required name="password" value="${member.password }">
             	</div>
             	<div class="form-group">
             		<label for="input3">이메일</label>
-            		<input type="email" class="form-control" id="input3" required name="email">
+            		<input type="email" class="form-control" id="input3" required name="email" value="${member.email }">
             	</div>
             	<div class="form-group">
             		<label for="input4">주소</label>
-            		<input type="text" class="form-control" id="input4" required name="address">
+            		<input type="text" class="form-control" id="input4" required name="address" value="${member.address }">
             	</div>
             	<button class="btn btn-outline-primary">가입</button>
             </form>

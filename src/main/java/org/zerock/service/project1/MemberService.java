@@ -20,7 +20,14 @@ public class MemberService {
 	}
 	
 	public boolean register(MemberVO member) {
-		return mapper.insert(member) == 1;
+		
+		try {
+			return mapper.insert(member) == 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 	
 	public boolean modify(MemberVO member) {
