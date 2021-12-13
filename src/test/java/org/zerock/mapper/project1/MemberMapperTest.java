@@ -1,10 +1,12 @@
 package org.zerock.mapper.project1;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -63,12 +65,28 @@ public class MemberMapperTest {
 		assertEquals(email, t.getEmail());
 		assertEquals(inserted, t.getInserted());
 		
+		// list test(지우기전)
+		List<MemberVO> list1 = mapper.list();
+		int size1 = list1.size();
+		for (MemberVO item : list1) {
+			assertNotNull(item.getId());
+			assertNotNull(item.getAddress());
+			assertNotNull(item.getPassword());
+			assertNotNull(item.getEmail());
+			assertNotNull(item.getInserted());
+		}
+		
 		// delete test
 		cnt = mapper.delete(id);
 		assertEquals(1, cnt);
 		
 		assertNull(mapper.select(id));
 		
+		// list test(지운 후)
+		List<MemberVO> list2 = mapper.list();
+		int size2 = list2.size();
+		
+		assertEquals(size1 - 1, size2);
 	}
 
 }
