@@ -1,5 +1,9 @@
 package org.zerock.mapper.project1;
 
+import java.util.List;
+
+import org.zerock.domain.project1.MemberVO;
+
 public interface MemberMapper {
 
 	public int insert(MemberVO member);
