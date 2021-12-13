@@ -5,6 +5,7 @@
 <c:url value="/board/list" var="listUrl"></c:url>
 <c:url value="/board/register" var="registerUrl"></c:url>
 <c:url value="/member/signup" var="signupUrl"></c:url>
+<c:url value="/member/login" var="loginUrl"></c:url>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -17,6 +18,9 @@
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="${signupUrl }">회원가입</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="${loginUrl }">로그인</a>
       </li>
     </ul>
 </nav>
