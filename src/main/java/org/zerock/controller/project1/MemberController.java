@@ -78,6 +78,14 @@ public class MemberController {
 		return "redirect:/board/list";
 		
 	}
+	
+	@RequestMapping("/logout") 
+	public String logout(HttpSession session) {
+		// 세션 invalidate
+		session.invalidate();
+		// /board/list redirect
+		return "redirect:/board/list";
+	}
 }
 
 
