@@ -86,6 +86,19 @@ public class MemberController {
 		// /board/list redirect
 		return "redirect:/board/list";
 	}
+	
+	@GetMapping("/info")
+	public String info(HttpSession session) {
+		MemberVO vo = (MemberVO) session.getAttribute("loggedInMember");
+		
+		// 로그아웃 상태
+		if (vo == null) {
+			return "redirect:/member/login";
+		}
+		
+		// 로그인 상태일 때
+		return null;
+	}
 }
 
 
