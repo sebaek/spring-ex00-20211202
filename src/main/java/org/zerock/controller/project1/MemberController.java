@@ -71,9 +71,9 @@ public class MemberController {
 		
 		// 멤버vo가 널이 아니고 패스워드가 일치하면 로그인 성공
 		// 로그인 성공
-		session.setAttribute("logedInMember", vo);
+		session.setAttribute("loggedInMember", vo);
 		
-		System.out.println(session.getAttribute("logedInMember"));
+		System.out.println(session.getAttribute("loggedInMember"));
 		
 		return "redirect:/board/list";
 		
