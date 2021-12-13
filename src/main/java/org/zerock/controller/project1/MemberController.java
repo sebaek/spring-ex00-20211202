@@ -1,5 +1,7 @@
 package org.zerock.controller.project1;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,25 +53,30 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public void login(String id, String password) {
+	public String login(String id, String password, HttpSession session) {
 		// service 사용해서 아이디로 멤버vo 얻고
 		MemberVO vo = service.read(id);
 		
 		if (vo == null) {
-			// 로그인 실패
+			return null;
 		}
-		
 		
 		// 얻어온 멤버vo의 패스워드와 입력한 패스워드가 같은 지 확인
 		boolean correctPassword = password.equals(vo.getPassword());
 		
 		// 멤버vo가 널이거나 패스워드가 다르면 로그인 실패
 		if (!correctPassword) {
-			// 로그인 실패
+			return null;
 		}
 		
 		// 멤버vo가 널이 아니고 패스워드가 일치하면 로그인 성공
 		// 로그인 성공
+		session.setAttribute("logedInMember", vo);
+		
+		System.out.println(session.getAttribute("logedInMember"));
+		
+		return "redirect:/board/list";
+		
 	}
 }
 
