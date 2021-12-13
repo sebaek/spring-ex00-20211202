@@ -29,7 +29,7 @@ public class MemberController {
 		boolean ok = service.register(member);
 		
 		if (ok) {
-			rttr.addFlashAttribute("success", "회원가입이 완료되었습니다.");
+			rttr.addFlashAttribute("result", "회원가입이 완료되었습니다.");
 			return "redirect:/board/list";
 		} else {
 			return "redirect:/member/signup";
