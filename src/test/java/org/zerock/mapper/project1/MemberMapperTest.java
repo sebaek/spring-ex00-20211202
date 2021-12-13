@@ -1,6 +1,7 @@
 package org.zerock.mapper.project1;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -61,6 +62,12 @@ public class MemberMapperTest {
 		assertEquals(newAddress, t.getAddress());
 		assertEquals(email, t.getEmail());
 		assertEquals(inserted, t.getInserted());
+		
+		// delete test
+		cnt = mapper.delete(id);
+		assertEquals(1, cnt);
+		
+		assertNull(mapper.select(id));
 		
 	}
 
