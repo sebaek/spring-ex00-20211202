@@ -99,6 +99,12 @@ public class MemberController {
 		// 로그인 상태일 때
 		return null;
 	}
+	
+	@PostMapping("/info")
+	public String info(MemberVO vo, HttpSession session) {
+		
+		return null;
+	}
 }
 
 
