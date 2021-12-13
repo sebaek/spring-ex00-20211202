@@ -24,28 +24,25 @@
 		<div class="col">
 			<h1>회원 가입</h1>
       
-            <!-- form>.form-group*4>label[for=input$]+input.form-control#input$[readonly]+button.btn.btn-outline-primary{가입} -->
+            <!-- form>.form-group*4>label[for=input$]+input.form-control#input$[readonly]^button.btn.btn-outline-primary{가입} -->
             <form action="">
             	<div class="form-group">
             		<label for="input1"></label>
             		<input type="text" class="form-control" id="input1" readonly="">
-            		<button class="btn btn-outline-primary">가입</button>
             	</div>
             	<div class="form-group">
             		<label for="input2"></label>
             		<input type="text" class="form-control" id="input2" readonly="">
-            		<button class="btn btn-outline-primary">가입</button>
             	</div>
             	<div class="form-group">
             		<label for="input3"></label>
             		<input type="text" class="form-control" id="input3" readonly="">
-            		<button class="btn btn-outline-primary">가입</button>
             	</div>
             	<div class="form-group">
             		<label for="input4"></label>
             		<input type="text" class="form-control" id="input4" readonly="">
-            		<button class="btn btn-outline-primary">가입</button>
             	</div>
+            	<button class="btn btn-outline-primary">가입</button>
             </form>
 		</div>
 	</div>
