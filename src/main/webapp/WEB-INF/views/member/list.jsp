@@ -33,6 +33,7 @@
               <th>이메일</th>
               <th>주소</th>
               <th>가입일시</th>
+              <th>작성글수</th>
             </tr>
           </thead>
           <tbody>
@@ -44,6 +45,7 @@
                 <td>${member.email }</td>
                 <td>${member.address }</td>
                 <td>${member.inserted }</td>
+                <td>${member.numberOfBoard }</td>
               </tr>
             </c:forEach>
           </tbody>
