@@ -91,12 +91,15 @@ public class MemberController {
 
 	@GetMapping("/info")
 	public String info(HttpSession session) {
+		/* filter로 처리함
+
 		MemberVO vo = (MemberVO) session.getAttribute("loggedInMember");
 
 		// 로그아웃 상태
 		if (vo == null) {
 			return "redirect:/member/login";
 		}
+		*/
 
 		// 로그인 상태일 때
 		return null;
@@ -104,12 +107,15 @@ public class MemberController {
 
 	@PostMapping("/info")
 	public String info(MemberVO member, HttpSession session, RedirectAttributes rttr) {
+		/* filter로 처리함
+
 		MemberVO vo = (MemberVO) session.getAttribute("loggedInMember");
 
 		// 로그아웃 상태
 		if (vo == null) {
 			return "redirect:/member/login";
 		}
+		*/
 		
 		// 로그인된 상태
 		boolean ok = service.modify(member);
@@ -126,12 +132,14 @@ public class MemberController {
 	
 	@PostMapping("/remove")
 	public String remove(String id, HttpSession session, RedirectAttributes rttr) {
+		/* filter로 처리함
 		MemberVO vo = (MemberVO) session.getAttribute("loggedInMember");
 
 		// 로그아웃 상태
 		if (vo == null) {
 			return "redirect:/member/login";
 		}
+		*/
 		
 		// 로그인된 상태
 		service.remove(id);
@@ -146,6 +154,7 @@ public class MemberController {
 	
 	@GetMapping("/list")
 	public String list(Model model, HttpSession session) {
+		/* filter로 처리함
 		// 로그인 된 상태가 아니면 로그인화면으로 redirect
 		MemberVO vo = (MemberVO) session.getAttribute("loggedInMember");
 
@@ -153,6 +162,7 @@ public class MemberController {
 		if (vo == null) {
 			return "redirect:/member/login";
 		}
+		*/
 		
 		List<MemberVO> list = service.getList();
 		
