@@ -1,5 +1,7 @@
 package org.zerock.controller.project1;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,6 +142,22 @@ public class MemberController {
 		
 		return "redirect:/board/list";
 		
+	}
+	
+	@GetMapping("/list")
+	public String list(Model model, HttpSession session) {
+		// 로그인 된 상태가 아니면 로그인화면으로 redirect
+		MemberVO vo = (MemberVO) session.getAttribute("loggedInMember");
+
+		// 로그아웃 상태
+		if (vo == null) {
+			return "redirect:/member/login";
+		}
+		
+		List<MemberVO> list = service.getList();
+		
+		model.addAttribute("memberList", list);
+		return null;
 	}
 }
 
