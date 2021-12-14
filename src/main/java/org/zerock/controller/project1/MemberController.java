@@ -58,7 +58,7 @@ public class MemberController {
 	public String login(String id, String password, HttpSession session) {
 		// service 사용해서 아이디로 멤버vo 얻고
 		MemberVO vo = service.read(id);
-
+		
 		if (vo == null) {
 			return null;
 		}
