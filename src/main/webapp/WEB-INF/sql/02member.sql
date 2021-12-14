@@ -38,7 +38,11 @@ FROM
     Member m ON b.writer = m.id
 ORDER BY id DESC;
 
-
+-- Member 조회 with 작성한 게시글 수
+SELECT m.id, m.password, m.email, m.address, m.inserted, m.nickName, COUNT(b.id)
+FROM Member m LEFT JOIN Board b ON m.id = b.writer
+GROUP BY m.id
+ORDER BY m.inserted DESC;
 
 
 

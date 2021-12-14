@@ -31,9 +31,20 @@
 	</delete>
 	
 	<select id="list" resultType="org.zerock.domain.project1.MemberVO">
-	SELECT id, password, email, address, inserted, nickName
-	FROM Member
-	ORDER BY inserted DESC
+SELECT 
+    m.id,
+    m.password,
+    m.email,
+    m.address,
+    m.inserted,
+    m.nickName,
+    COUNT(b.id) AS numberOfBoard
+FROM
+    Member m
+        LEFT JOIN
+    Board b ON m.id = b.writer
+GROUP BY m.id
+ORDER BY m.inserted DESC
 	</select>
 
 </mapper>
