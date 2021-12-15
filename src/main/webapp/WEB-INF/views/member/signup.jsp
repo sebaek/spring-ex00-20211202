@@ -65,29 +65,26 @@
   
   <script>
   $(document).ready(function() {
-    // 두 개의 인풋요소의 값이 같을 때만 submit 버튼 활성화 
-    // 아니면 비활성화
     const passwordInput = $("#input2");
     const passwordConfirmInput = $("#input6");
     const submitButton = $("#submitButton1");
     
     const confirmFunction = function() {
+      // 두 인풋 요소의 값을 비교해서 서브밋 버튼 활성화 또는 비활성화
       const passwordValue = passwordInput.val();
       const passwordConfirmValue = passwordConfirmInput.val();
       
       if (passwordValue === passwordConfirmValue) {
         submitButton.removeAttr("disabled");
       } else {
-        submitButton.attr("disabled", true);    
+        submitButton.attr("disabled", true);
       }
+      
     };
     
     submitButton.attr("disabled", true);
-    
-    passwordInput.keyup(confirmFunction);
-    
+    passwordInput.keyup(confirmFunction);    
     passwordConfirmInput.keyup(confirmFunction);
-    
   });
   </script>
 </body>
