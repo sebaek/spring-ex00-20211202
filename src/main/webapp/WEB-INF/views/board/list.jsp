@@ -39,9 +39,9 @@
               <tr>
                 <td>${board.id }</td>
                 <td>
-                  <a href="get?id=${board.id }"> ${board.title } </a>
+                  <a href="get?id=${board.id }"><c:out value="${board.title }"/></a>
                 </td>
-                <td>${board.nickName }</td>
+                <td><c:out value="${board.nickName }"/></td>
                 <td>${board.customInserted }</td>
               </tr>
             </c:forEach>
