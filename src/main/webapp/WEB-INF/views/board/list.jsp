@@ -42,7 +42,7 @@
                   <a href="get?id=${board.id }"> ${board.title } </a>
                 </td>
                 <td>${board.nickName }</td>
-                <td>${board.inserted }</td>
+                <td>${board.customInserted }</td>
               </tr>
             </c:forEach>
           </tbody>
