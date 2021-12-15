@@ -30,7 +30,7 @@
                 <i class="fab fa-slack-hash"></i>
               </th>
               <th>제목</th>
-              <th>작성자</th>
+              <th><i class="fas fa-user"></i></th>
               <th>작성일</th>
             </tr>
           </thead>
