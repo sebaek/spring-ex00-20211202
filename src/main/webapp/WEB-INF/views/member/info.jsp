@@ -29,11 +29,11 @@
           </div>
           <div class="form-group">
             <label for="input2">패스워드</label>
-            <input type="text" required id="input2" class="form-control" name="password" value="${sessionScope.loggedInMember.password }">
+            <input type="password" required id="input2" class="form-control" name="password" value="${sessionScope.loggedInMember.password }">
           </div>
           <div class="form-group">
             <label for="input6">패스워드 확인</label>
-            <input type="text" required id="input6" class="form-control">
+            <input type="password" required id="input6" class="form-control">
           </div>
           <div class="form-group">
             <label for="input5">닉네임</label>
