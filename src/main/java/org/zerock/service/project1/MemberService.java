@@ -52,6 +52,11 @@ public class MemberService {
 	public PageInfoVO getPageInfo(Integer page, Integer numberPerPage) {
 		Integer countRows = mapper.getCountRows(); // 총 레코드 수 
 		Integer lastPage = (countRows - 1) / numberPerPage + 1; // 마지막 페이지 번호
+		Integer leftPageNumber = page - 5; // 가장 왼쪽 페이지 번호
+		leftPageNumber = Math.max(1, leftPageNumber);
+		
+		Integer rightPageNumber = leftPageNumber + 9; // 가장 오른쪽 페이지 번호
+		rightPageNumber = Math.min(rightPageNumber, lastPage);
 		
 
 		PageInfoVO pageInfo = new PageInfoVO();
@@ -59,6 +64,9 @@ public class MemberService {
 		pageInfo.setLastPage(lastPage);
 		pageInfo.setCurrentPage(page);
 		pageInfo.setCountRows(countRows);
+		pageInfo.setLeftPageNumber(leftPageNumber);
+		pageInfo.setRightPageNumber(rightPageNumber);
+		
 		
 		return pageInfo;
 	}

@@ -74,7 +74,7 @@
         </a>
       </li>
       
-      <c:forEach begin="1" end="${pageInfo.lastPage }" var="pageNumber">
+      <c:forEach begin="${pageInfo.leftPageNumber }" end="${pageInfo.rightPageNumber }" var="pageNumber">
         <c:url value="/member/list" var="pageLink">
           <c:param name="page" value="${pageNumber }" />
         </c:url>
