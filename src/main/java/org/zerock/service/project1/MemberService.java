@@ -58,6 +58,8 @@ public class MemberService {
 		Integer rightPageNumber = leftPageNumber + 9; // 가장 오른쪽 페이지 번호
 		rightPageNumber = Math.min(rightPageNumber, lastPage);
 		
+		Boolean hasNextButton = page != lastPage; // 다음 페이지 버튼 존재 유무
+		Boolean hasPrevButton = page != 1; // 이전 페이지 버튼 존재 유무
 
 		PageInfoVO pageInfo = new PageInfoVO();
 		
@@ -66,6 +68,8 @@ public class MemberService {
 		pageInfo.setCountRows(countRows);
 		pageInfo.setLeftPageNumber(leftPageNumber);
 		pageInfo.setRightPageNumber(rightPageNumber);
+		pageInfo.setHasNextButton(hasNextButton);
+		pageInfo.setHasPrevButton(hasPrevButton);
 		
 		
 		return pageInfo;

@@ -68,12 +68,17 @@
 
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      
+      <c:if test="${pageInfo.hasPrevButton }">
+        <c:url value="/member/list" var="pageLink">
+          <c:param name="page" value="${pageInfo.currentPage - 1 }"></c:param>
+        </c:url>
+        <li class="page-item">
+          <a class="page-link" href="${pageLink }" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+      </c:if>
+
       <c:forEach begin="${pageInfo.leftPageNumber }" end="${pageInfo.rightPageNumber }" var="pageNumber">
         <c:url value="/member/list" var="pageLink">
           <c:param name="page" value="${pageNumber }" />
@@ -83,11 +88,16 @@
         </li>
       </c:forEach>
 
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
+      <c:if test="${pageInfo.hasNextButton }">
+        <c:url value="/member/list" var="pageLink">
+          <c:param name="page" value="${pageInfo.currentPage + 1 }"></c:param>
+        </c:url>
+        <li class="page-item">
+          <a class="page-link" href="${pageLink }" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </c:if>
     </ul>
   </nav>
 
