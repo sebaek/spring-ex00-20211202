@@ -69,7 +69,7 @@
         <c:url value="/board/list" var="pageLink">
           <c:param name="page" value="${pageNumber }"></c:param>
         </c:url>
-        <li class="page-item">
+        <li class="page-item ${pageInfo.currentPage == pageNumber ? 'active' : '' }">
           <a class="page-link" href="${pageLink }">${pageNumber }</a>
         </li>
       </c:forEach>

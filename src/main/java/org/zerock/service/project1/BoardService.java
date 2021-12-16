@@ -56,6 +56,7 @@ public class BoardService {
 		
 		pageInfo.setLastPage(lastPage);
 		pageInfo.setCountRows(countRows);
+		pageInfo.setCurrentPage(page);
 		
 		return pageInfo;
 	}
