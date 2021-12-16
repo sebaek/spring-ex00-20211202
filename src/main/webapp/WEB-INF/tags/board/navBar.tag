@@ -14,9 +14,6 @@
 
   <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
-      <a class="nav-link" href="${memberListUrl }">TEST 회원목록보기</a>
-    </li>
-    <li class="nav-item active">
       <a class="nav-link" href="${listUrl }">목록</a>
     </li>
     <c:if test="${empty sessionScope.loggedInMember }">

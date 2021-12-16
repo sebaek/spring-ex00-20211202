@@ -156,8 +156,6 @@ public class MemberController {
 	
 	@GetMapping("/list")
 	public String list(@RequestParam(defaultValue = "1")Integer page, Model model) {
-		System.out.println(page);
-		
 		Integer numberPerPage = 10;
 		
 		/* filter로 처리함
