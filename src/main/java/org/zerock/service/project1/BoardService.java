@@ -15,24 +15,23 @@ public class BoardService {
 
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
-	
-	
+
 	public boolean register(BoardVO board) {
 		return mapper.insert(board) == 1;
 	}
-	
+
 	public BoardVO get(Integer id) {
 		return mapper.read(id);
 	}
-	
+
 	public boolean modify(BoardVO board) {
 		return mapper.update(board) == 1;
 	}
-	
+
 	public boolean remove(Integer id) {
 		return mapper.delete(id) == 1;
 	}
-	
+
 	public List<BoardVO> getList() {
 		return mapper.getList();
 	}
@@ -41,37 +40,34 @@ public class BoardService {
 
 		// sql에서 사용할 record 시작 번호 (0-index)
 		Integer from = (page - 1) * 10;
-		
+
 		return mapper.getListPage(from, numberPerPage);
 	}
 
 	public PageInfoVO getPageInfo(Integer page, Integer numberPerPage) {
 		// 총 게시물 수
 		Integer countRows = mapper.getCountRows();
-		
+
 		// 마지막 페이지 번호
 		Integer lastPage = (countRows - 1) / numberPerPage + 1;
+
+		// 페이지네이션 가장 왼쪽 번호
+		Integer leftPageNumber = (page - 1) / 10 * 10 + 1;
+
+		// 페이지네이션 가장 오른쪽 번호
+		Integer rightPageNumber = (page - 1) / 10 * 10 + 10;
+		// 가장 마지막 페이지를 넘어가지 않도록
+		rightPageNumber = rightPageNumber > lastPage ? lastPage : rightPageNumber; 
 		
+
 		PageInfoVO pageInfo = new PageInfoVO();
-		
+
 		pageInfo.setLastPage(lastPage);
 		pageInfo.setCountRows(countRows);
 		pageInfo.setCurrentPage(page);
-		
+		pageInfo.setLeftPageNumber(leftPageNumber);
+		pageInfo.setRightPageNumber(rightPageNumber);
+
 		return pageInfo;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
