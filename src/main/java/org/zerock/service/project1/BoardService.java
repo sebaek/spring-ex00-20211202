@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.project1.BoardVO;
+import org.zerock.domain.project1.PageInfoVO;
 import org.zerock.mapper.project1.BoardMapper;
 
 import lombok.Setter;
@@ -42,6 +43,21 @@ public class BoardService {
 		Integer from = (page - 1) * 10;
 		
 		return mapper.getListPage(from, numberPerPage);
+	}
+
+	public PageInfoVO getPageInfo(Integer page, Integer numberPerPage) {
+		// 총 게시물 수
+		Integer countRows = mapper.getCountRows();
+		
+		// 마지막 페이지 번호
+		Integer lastPage = (countRows - 1) / numberPerPage + 1;
+		
+		PageInfoVO pageInfo = new PageInfoVO();
+		
+		pageInfo.setLastPage(lastPage);
+		pageInfo.setCountRows(countRows);
+		
+		return pageInfo;
 	}
 }
 

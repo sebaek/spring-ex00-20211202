@@ -23,6 +23,8 @@ public interface BoardMapper {
 	public int update(BoardVO board);
 
 	public List<BoardVO> getListPage(@Param("from") Integer from, @Param("items") Integer numberPerPage);
+
+	public Integer getCountRows();
 	
 }
 
