@@ -157,6 +157,8 @@ public class MemberController {
 	public String list(@RequestParam(defaultValue = "1")Integer page, Model model) {
 		System.out.println(page);
 		
+		Integer numberPerPage = 10;
+		
 		/* filter로 처리함
 		// 로그인 된 상태가 아니면 로그인화면으로 redirect
 		MemberVO vo = (MemberVO) session.getAttribute("loggedInMember");
@@ -167,7 +169,7 @@ public class MemberController {
 		}
 		*/
 		
-		List<MemberVO> list = service.getList();
+		List<MemberVO> list = service.getList(page, numberPerPage);
 		
 		model.addAttribute("memberList", list);
 		return null;

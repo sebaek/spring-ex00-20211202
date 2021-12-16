@@ -33,17 +33,27 @@
               <th>이메일</th>
               <th>주소</th>
               <th>가입일시</th>
-              <th><i class="far fa-sticky-note"></i></th>
+              <th>
+                <i class="far fa-sticky-note"></i>
+              </th>
             </tr>
           </thead>
           <tbody>
             <c:forEach items="${memberList }" var="member">
               <tr>
                 <td>${member.id }</td>
-                <td><c:out value="${member.password }"/></td>
-                <td><c:out value="${member.nickName }"/></td>
-                <td><c:out value="${member.email }"/></td>
-                <td><c:out value="${member.address }"/></td>
+                <td>
+                  <c:out value="${member.password }" />
+                </td>
+                <td>
+                  <c:out value="${member.nickName }" />
+                </td>
+                <td>
+                  <c:out value="${member.email }" />
+                </td>
+                <td>
+                  <c:out value="${member.address }" />
+                </td>
                 <td>${member.inserted }</td>
                 <td>${member.numberOfBoard }</td>
               </tr>
@@ -54,6 +64,31 @@
     </div>
   </div>
 
+  <!--  pagination -->
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="<%= request.getContextPath() %>/member/list?page=1">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="<%= request.getContextPath() %>/member/list?page=2">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="<%= request.getContextPath() %>/member/list?page=3">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>

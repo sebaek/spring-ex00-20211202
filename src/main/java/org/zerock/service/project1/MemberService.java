@@ -41,6 +41,12 @@ public class MemberService {
 	public List<MemberVO> getList() {
 		return mapper.list();
 	}
+
+	public List<MemberVO> getList(Integer page, Integer numberPerPage) {
+		Integer from = (page - 1) * numberPerPage;
+		
+		return mapper.listPage(from, numberPerPage);
+	}
 }
 
 
