@@ -73,15 +73,16 @@
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
-      <li class="page-item">
-        <a class="page-link" href="<%= request.getContextPath() %>/member/list?page=1">1</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="<%= request.getContextPath() %>/member/list?page=2">2</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="<%= request.getContextPath() %>/member/list?page=3">3</a>
-      </li>
+      
+      <c:forEach begin="1" end="${pageInfo.lastPage }" var="pageNumber">
+        <c:url value="/member/list" var="pageLink">
+          <c:param name="page" value="${pageNumber }" />
+        </c:url>
+        <li class="page-item ${pageNumber == pageInfo.currentPage ? 'active' : '' }">
+          <a class="page-link" href="${pageLink }">${pageNumber }</a>
+        </li>
+      </c:forEach>
+
       <li class="page-item">
         <a class="page-link" href="#" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>

@@ -64,6 +64,10 @@ GROUP BY m.id
 ORDER BY m.inserted DESC
 LIMIT #{from}, #{items}
 	</select>
+	
+	<select id="getCountRows" resultType="int">
+	SELECT COUNT(*) FROM Member
+	</select>
 
 </mapper>
 

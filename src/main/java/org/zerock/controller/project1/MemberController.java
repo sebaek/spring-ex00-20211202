@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.project1.MemberVO;
+import org.zerock.domain.project1.PageInfoVO;
 import org.zerock.service.project1.MemberService;
 
 import lombok.Setter;
@@ -170,8 +171,11 @@ public class MemberController {
 		*/
 		
 		List<MemberVO> list = service.getList(page, numberPerPage);
+		PageInfoVO pageInfo = service.getPageInfo(page, numberPerPage);
 		
 		model.addAttribute("memberList", list);
+		model.addAttribute("pageInfo", pageInfo);
+		
 		return null;
 	}
 }

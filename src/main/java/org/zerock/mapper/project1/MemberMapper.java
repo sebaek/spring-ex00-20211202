@@ -18,4 +18,6 @@ public interface MemberMapper {
 	public List<MemberVO> list(); //
 
 	public List<MemberVO> listPage(@Param("from") Integer from, @Param("items") Integer numberPerPage); // page 처리
+
+	public Integer getCountRows();
 }
