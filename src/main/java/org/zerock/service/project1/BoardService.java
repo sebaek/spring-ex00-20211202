@@ -59,6 +59,11 @@ public class BoardService {
 		// 가장 마지막 페이지를 넘어가지 않도록
 		rightPageNumber = rightPageNumber > lastPage ? lastPage : rightPageNumber; 
 		
+		// 이전 페이지 버튼 존재 유무
+		Boolean hasPrevButton = leftPageNumber != 1;
+		
+		// 다음 페이지 버튼 존재 유무
+		Boolean hasNextButton = rightPageNumber != lastPage;
 
 		PageInfoVO pageInfo = new PageInfoVO();
 
@@ -67,7 +72,22 @@ public class BoardService {
 		pageInfo.setCurrentPage(page);
 		pageInfo.setLeftPageNumber(leftPageNumber);
 		pageInfo.setRightPageNumber(rightPageNumber);
+		pageInfo.setHasPrevButton(hasPrevButton);
+		pageInfo.setHasNextButton(hasNextButton);
 
 		return pageInfo;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
