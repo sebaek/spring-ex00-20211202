@@ -60,6 +60,13 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+<input type="text" placeholder="name" id="input05">
+<input type="text" placeholder="address" id="input06">
+<button id="btn05">/cont14/met05 ajax 요청: 위 2개의 인풋요소의 값이 전송 되도록 AND server에서는 두 값을 출력</button>
+
+
+<hr>
+
 <input type="text" id="input04">
 <button id="btn04">/cont14/met04 요청 : input요소에 입력된 값 보내기</button>
 <hr>
