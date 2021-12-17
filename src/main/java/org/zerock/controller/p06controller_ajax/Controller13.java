@@ -58,6 +58,12 @@ public class Controller13 {
 		
 		return number + "";
 	}
+	
+	@RequestMapping("/met08")
+	@ResponseBody
+	public String method08() {
+		return "hello met08";
+	}
 }
 
 

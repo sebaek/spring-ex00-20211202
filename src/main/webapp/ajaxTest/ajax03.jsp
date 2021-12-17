@@ -81,6 +81,30 @@ $(document).ready(function() {
     });
   });
   
+  $("#btn09").click(function() {
+    $.ajax({
+      url : appRoot + "/cont13/met08",
+      complete : function() {
+        console.log("요청 끝남");
+      }
+    })
+  });
+  
+  $("#btn10").click(function() {
+    $.ajax({
+      url : appRoot + "/cont13/met09",
+      success : function() {
+		console.log("요청 성공");
+      },
+      error : function() {
+        console.log("요청 실패");
+      },
+      complete : function() {
+        console.log("요청 완료");
+      }
+    });
+  });
+  
 });
 </script>
 </head>
@@ -94,6 +118,8 @@ $(document).ready(function() {
 <button id="btn07">/cont13/met06 응답받은 데이터 콘솔에 출력</button> <br>
 <button id="btn08">/cont13/met07 응답받은 데이터(1~10 랜덤값)를 #resut08 요소에 content로 작성</button> <br>
 <p id="result08"></p>
+<button id="btn09">/cont13/met08 요청완료시 complete 실행</button> <br>
+<button id="btn10">/cont13/met09 요청완료시 success/error AND complete 실행</button>
 
 
 
