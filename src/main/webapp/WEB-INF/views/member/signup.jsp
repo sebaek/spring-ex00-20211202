@@ -39,6 +39,8 @@
                 <button class="btn btn-secondary" id="idCheckButton" type="button">중복확인</button>
               </div>
             </div>
+            <!-- small.form-text#idCheckMessage -->
+            <small class="form-text" id="idCheckMessage"></small>
           </div>
           <div class="form-group">
             <label for="input2">패스워드</label>
@@ -80,7 +82,17 @@
         // 1) 서브밋 버튼 활성화 또는 비활성화 AND 
         // 2) 사용가능 또는 불가능 메세지 출력
         $("#idCheckButton").click(function() {
-          const idValue = $("#input1").val();
+          $("#idCheckButton").attr("disabled", true);
+          
+          const idValue = $("#input1").val().trim();
+          
+          // 아이디 input에 입력안되었을 경우 더 이상 진행하지 않고
+          // 아이디 입력하라는 메세지 출력
+          if (idValue === "") {
+            $("#idCheckMessage").text("아이디를 입력해주세요.");
+            $("#idCheckButton").removeAttr("disabled");
+            return ;
+          }
           
           $.ajax({
             url : appRoot + "/member/idcheck",
@@ -91,16 +103,19 @@
               switch (data) {
               case "able":
                 // 사용가능할 때
-                console.log("사용 가능");
+                $("#idCheckMessage").text("사용 가능한 아이디 입니다.");
                 break;
               case "unable":
                 // 사용불가능할 때
-                console.log("사용 불가능");
+                $("#idCheckMessage").text("이미 있는 아이디 입니다.")
                 break;
 
               default:
                 break;
               }
+            },
+            complete : function() {
+              $("#idCheckButton").removeAttr("disabled");
             }
           });
         });
