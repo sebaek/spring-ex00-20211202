@@ -89,7 +89,10 @@
           // 아이디 input에 입력안되었을 경우 더 이상 진행하지 않고
           // 아이디 입력하라는 메세지 출력
           if (idValue === "") {
-            $("#idCheckMessage").text("아이디를 입력해주세요.");
+            $("#idCheckMessage")
+            	.text("아이디를 입력해주세요.")
+            	.removeClass("text-primary text-danger")
+            	.addClass("text-warning");
             $("#idCheckButton").removeAttr("disabled");
             return ;
           }
@@ -103,11 +106,17 @@
               switch (data) {
               case "able":
                 // 사용가능할 때
-                $("#idCheckMessage").text("사용 가능한 아이디 입니다.");
+                $("#idCheckMessage")
+                	.text("사용 가능한 아이디 입니다.")
+                	.removeClass("text-danger text-warning")
+                	.addClass("text-primary");
                 break;
               case "unable":
                 // 사용불가능할 때
-                $("#idCheckMessage").text("이미 있는 아이디 입니다.")
+                $("#idCheckMessage")
+                	.text("이미 있는 아이디 입니다.")
+                	.removeClass("text-warning text-primary")
+                	.addClass("text-danger")
                 break;
 
               default:
