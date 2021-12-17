@@ -74,6 +74,13 @@ public class MemberService {
 		
 		return pageInfo;
 	}
+
+	public boolean hasId(String id) {
+
+		MemberVO member =  mapper.select(id);
+		
+		return member != null;
+	}
 }
 
 

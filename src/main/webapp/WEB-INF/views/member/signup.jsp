@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/icon/css/all.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <title>Insert title here</title>
 </head>
@@ -31,7 +32,13 @@
         <form method="post">
           <div class="form-group">
             <label for="input1">아이디</label>
-            <input type="text" class="form-control" id="input1" required name="id" value="${member.id }">
+            <!-- .input-group>.input-group-append>button.btn.btn-secondary#idCheckButton{중복확인} -->
+            <div class="input-group">
+              <input type="text" class="form-control" id="input1" required name="id" value="${member.id }">
+              <div class="input-group-append">
+                <button class="btn btn-secondary" id="idCheckButton" type="button">중복확인</button>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="input2">패스워드</label>
@@ -59,34 +66,70 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-  
-  
+
+
   <script>
-  $(document).ready(function() {
-    const passwordInput = $("#input2");
-    const passwordConfirmInput = $("#input6");
-    const submitButton = $("#submitButton1");
-    
-    const confirmFunction = function() {
-      // 두 인풋 요소의 값을 비교해서 서브밋 버튼 활성화 또는 비활성화
-      const passwordValue = passwordInput.val();
-      const passwordConfirmValue = passwordConfirmInput.val();
-      
-      if (passwordValue === passwordConfirmValue) {
-        submitButton.removeAttr("disabled");
-      } else {
+      $(document).ready(function() {
+        // contextPath
+        const appRoot = '${pageContext.request.contextPath}';
+        // 아이디 중복확인 버튼이 클릭되면
+        // 아이디 input요소에 입력된 값을 
+        // 서버에 전송 후
+        // 응답 받은 값에 따라서 
+        // 1) 서브밋 버튼 활성화 또는 비활성화 AND 
+        // 2) 사용가능 또는 불가능 메세지 출력
+        $("#idCheckButton").click(function() {
+          const idValue = $("#input1").val();
+          
+          $.ajax({
+            url : appRoot + "/member/idcheck",
+            data : {
+              id : idValue
+            },
+            success : function(data) {
+              switch (data) {
+              case "able":
+                // 사용가능할 때
+                console.log("사용 가능");
+                break;
+              case "unable":
+                // 사용불가능할 때
+                console.log("사용 불가능");
+                break;
+
+              default:
+                break;
+              }
+            }
+          });
+        });
+        
+        
+        // 아래 코드에서 필요한 요소들 선택 
+        const passwordInput = $("#input2");
+        const passwordConfirmInput = $("#input6");
+        const submitButton = $("#submitButton1");
+
+        // 암호input과 암호확인input값 비교해서 서브밋 버튼 활성화 또는 비활성화
+        const confirmFunction = function() {
+          // 두 인풋 요소의 값을 비교해서 서브밋 버튼 활성화 또는 비활성화
+          const passwordValue = passwordInput.val();
+          const passwordConfirmValue = passwordConfirmInput.val();
+
+          if (passwordValue === passwordConfirmValue) {
+            submitButton.removeAttr("disabled");
+          } else {
+            submitButton.attr("disabled", true);
+          }
+
+        };
+
         submitButton.attr("disabled", true);
-      }
-      
-    };
-    
-    submitButton.attr("disabled", true);
-    passwordInput.keyup(confirmFunction);    
-    passwordConfirmInput.keyup(confirmFunction);
-  });
-  </script>
+        passwordInput.keyup(confirmFunction);
+        passwordConfirmInput.keyup(confirmFunction);
+      });
+    </script>
 </body>
 </html>
 
