@@ -56,6 +56,19 @@ $(document).ready(function() {
       }
     });
   });
+  
+  $("#btn05").click(function() {
+    const name = $("#input05").val();
+    const address = $("#input06").val();
+    
+    $.ajax({
+      url : appRoot + "/cont14/met05",
+      data : {
+        name : name,
+        address : address
+      }
+    });
+  });
 });
 </script>
 </head>

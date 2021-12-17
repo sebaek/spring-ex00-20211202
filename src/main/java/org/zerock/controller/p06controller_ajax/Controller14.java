@@ -42,6 +42,12 @@ public class Controller14 {
 		
 		return "hello";
 	}
+	
+	@RequestMapping("/met05")
+	public void method05(String name, String address) {
+		System.out.println(name);
+		System.out.println(address);
+	}
 }
 
 
