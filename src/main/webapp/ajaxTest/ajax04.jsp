@@ -26,6 +26,25 @@ $(document).ready(function() {
       }
     });
   });
+  
+  $("#btn02").click(function() {
+    $.ajax({
+      url : appRoot + "/cont14/met02",
+      data : {
+        city : "seoul"
+      }
+    });
+  });
+  
+  $("#btn03").click(function() {
+    $.ajax({
+      url : appRoot + "/cont14/met03",
+      data : {
+        city : "busan",
+        name : "trump"
+      }
+    });
+  });
 });
 </script>
 </head>
@@ -34,6 +53,9 @@ $(document).ready(function() {
 <button id="btn02">
 /cont14/met02 ajax요청 "city" request parameter 서버로 전송 
 AND 서버에서는 "city" request parameter의 값을 sysout으로 출력
+</button> <br>
+<button id="btn03">
+/cont14/met03 요청 
 </button>
 
 

@@ -17,4 +17,28 @@ public class Controller14 {
 		
 		return "hello";
 	}
+	
+	@RequestMapping("/met02")
+	@ResponseBody
+	public String method02(String city) {
+		System.out.println(city);
+		
+		return "hello";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
