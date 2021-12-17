@@ -64,6 +64,12 @@ public class Controller13 {
 	public String method08() {
 		return "hello met08";
 	}
+	
+	@RequestMapping("/met09")
+	@ResponseBody
+	public String method09() {
+		return "hello met09";
+	}
 }
 
 
