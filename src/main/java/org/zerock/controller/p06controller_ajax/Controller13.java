@@ -15,4 +15,50 @@ public class Controller13 {
 		
 		return "data only - hello" + Math.random();
 	}
+	
+	@RequestMapping("/met02")
+	public void method02() {
+		System.out.println("cont13 met02 일함.");
+	}
+	
+	@RequestMapping("/met03")
+	public String method03() {
+		System.out.println("cont13 met03 일함");
+		
+		return "view01";
+	}
+	
+	@RequestMapping("/met04")
+	@ResponseBody
+	public String method04() {
+		System.out.println("cont13 met04 일함");
+		
+		return "hello This is Data only";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
