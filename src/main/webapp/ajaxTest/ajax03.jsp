@@ -45,6 +45,24 @@ $(document).ready(function() {
     });
   });
   
+  $("#btn05").click(function() {
+    $.ajax({
+      url : appRoot + "/cont13/metbb",
+      error : function() {
+        alert("/cont13/metbb 요청 실패!");
+      }
+    });
+  });
+  
+  $("#btn06").click(function() {
+    $.ajax({
+      url : appRoot + "/cont13/met05",
+      success : function() {
+        console.log("요청 성공");
+      }
+    });
+  });
+  
 });
 </script>
 </head>
@@ -52,8 +70,9 @@ $(document).ready(function() {
 <button id="btn01">/cont13/met02</button> <br>
 <button id="btn02">/cont13/met03 응답있음 jsp 페이지 전체</button> <br>
 <button id="btn03">/cont13/met04 응답있음 단순 데이터</button> <br>
-<button id="btn04">/cont13/metaa 존재하지 않는 경로</button>
-<button id="btn05">/cont13/metbb 존재하지 않는 경로 요청 보냈을 때 alert("요청 실패")</button>
+<button id="btn04">/cont13/metaa 존재하지 않는 경로</button> <br>
+<button id="btn05">/cont13/metbb 존재하지 않는 경로 요청 보냈을 때 alert("요청 실패")</button> <br>
+<button id="btn06">/cont13/met05 요청성공시 log</button> <br>
 
 
 
