@@ -35,6 +35,21 @@ public class Controller13 {
 		
 		return "hello This is Data only";
 	}
+	
+	@RequestMapping("/met05")
+	@ResponseBody
+	public String method05() {
+		System.out.println("cont13 met05 일함");
+		return "view01";
+	}
+	
+	@RequestMapping("/met06")
+	@ResponseBody
+	public String method06() {
+		System.out.println("cont13 met06 일함");
+		
+		return "random" + Math.random();
+	}
 }
 
 
