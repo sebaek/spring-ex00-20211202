@@ -45,10 +45,24 @@ $(document).ready(function() {
       }
     });
   });
+  
+  $("#btn04").click(function() {
+    const val = $("#input04").val();
+    
+    $.ajax({
+      url : appRoot + "/cont14/met04",
+      data : {
+        data1 : val
+      }
+    });
+  });
 });
 </script>
 </head>
 <body>
+<input type="text" id="input04">
+<button id="btn04">/cont14/met04 요청 : input요소에 입력된 값 보내기</button>
+<hr>
 <button id="btn01">/cont14/met01 요청</button>
 <button id="btn02">
 /cont14/met02 ajax요청 "city" request parameter 서버로 전송 
@@ -57,6 +71,7 @@ AND 서버에서는 "city" request parameter의 값을 sysout으로 출력
 <button id="btn03">
 /cont14/met03 요청 
 </button>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
