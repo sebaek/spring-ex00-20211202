@@ -73,6 +73,24 @@
 
   <script>
       $(document).ready(function() {
+        // 아래 코드에서 필요한 요소들 선택 
+        const passwordInput = $("#input2");
+        const passwordConfirmInput = $("#input6");
+        const submitButton = $("#submitButton1");
+        
+        // submit 버튼 활성화 조건 변수
+        let idAble = false;
+        let passwordCheck = false;
+        
+        // submit 버튼 활성화 메소드
+        let enableSubmit = function() {
+          if (idAble && passwordCheck) {
+            submitButton.removeAttr("disabled");
+          } else {
+            submitButton.attr("disabled", true);
+          }
+        }
+        
         // contextPath
         const appRoot = '${pageContext.request.contextPath}';
         // 아이디 중복확인 버튼이 클릭되면
@@ -110,13 +128,19 @@
                 	.text("사용 가능한 아이디 입니다.")
                 	.removeClass("text-danger text-warning")
                 	.addClass("text-primary");
+                
+                // 서브밋 버튼 활성화 조건 추가
+                idAble = true;
                 break;
               case "unable":
                 // 사용불가능할 때
                 $("#idCheckMessage")
                 	.text("이미 있는 아이디 입니다.")
                 	.removeClass("text-warning text-primary")
-                	.addClass("text-danger")
+                	.addClass("text-danger");
+                
+                // 서브밋 버튼 비활성화 조건 추가
+                idAble = false;
                 break;
 
               default:
@@ -124,17 +148,12 @@
               }
             },
             complete : function() {
+              enableSubmit(); // 조건이 충족되었을 때만 submit 버튼 활성화
               $("#idCheckButton").removeAttr("disabled");
             }
           });
         });
         
-        
-        // 아래 코드에서 필요한 요소들 선택 
-        const passwordInput = $("#input2");
-        const passwordConfirmInput = $("#input6");
-        const submitButton = $("#submitButton1");
-
         // 암호input과 암호확인input값 비교해서 서브밋 버튼 활성화 또는 비활성화
         const confirmFunction = function() {
           // 두 인풋 요소의 값을 비교해서 서브밋 버튼 활성화 또는 비활성화
@@ -142,11 +161,14 @@
           const passwordConfirmValue = passwordConfirmInput.val();
 
           if (passwordValue === passwordConfirmValue) {
-            submitButton.removeAttr("disabled");
+            // submitButton.removeAttr("disabled");
+            passwordCheck = true;
           } else {
-            submitButton.attr("disabled", true);
+            // submitButton.attr("disabled", true);
+            passwordCheck = false;
           }
-
+		  
+          enableSubmit();// 조건이 충족되었을 때만 submit 버튼 활성화
         };
 
         submitButton.attr("disabled", true);
