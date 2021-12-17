@@ -50,6 +50,14 @@ public class Controller13 {
 		
 		return "random" + Math.random();
 	}
+	
+	@RequestMapping("/met07")
+	@ResponseBody
+	public String method07() {
+		int number = ((int) (Math.random() * 10)) + 1;
+		
+		return number + "";
+	}
 }
 
 

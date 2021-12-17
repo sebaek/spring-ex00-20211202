@@ -72,6 +72,14 @@ $(document).ready(function() {
     });
   });
   
+  $("#btn08").click(function() {
+    $.ajax({
+      url : appRoot + "/cont13/met07",
+      success : function(data) {
+        $("#result08").html(data);
+      }
+    });
+  });
   
 });
 </script>
@@ -84,7 +92,7 @@ $(document).ready(function() {
 <button id="btn05">/cont13/metbb 존재하지 않는 경로 요청 보냈을 때 alert("요청 실패")</button> <br>
 <button id="btn06">/cont13/met05 요청성공시 log</button> <br>
 <button id="btn07">/cont13/met06 응답받은 데이터 콘솔에 출력</button> <br>
-<button id="btn08">/cont13/met07 응답받은 데이터를 #resut08 요소에 content로 작성</button> <br>
+<button id="btn08">/cont13/met07 응답받은 데이터(1~10 랜덤값)를 #resut08 요소에 content로 작성</button> <br>
 <p id="result08"></p>
 
 
