@@ -55,12 +55,29 @@ $(document).ready(function() {
       }
     });
   });
+  
+  $("#button04").click(function() {
+    $.ajax({
+      url : appRoot + "/cont15/met04",
+      success : function(data) {
+        console.log("성공 04:" + data);
+      },
+      error : function() {
+        console.log("실패 04");
+      },
+      complete : function() {
+        console.log("완료 04");
+      }
+    });
+  });
 });
 </script>
 
 <title>Insert title here</title>
 </head>
 <body>
+<button id="button04">/cont15/met04 OK or FORBIDDEN</button>
+
 <button id="button03">/cont15/met03 403 FORBIDDEN 응답</button>
 
 <button id="button02">/cont15/met02 200 OK 응답</button>

@@ -30,8 +30,24 @@ public class Controller15 {
 	@RequestMapping("/met03")
 	public ResponseEntity<String> method03() {
 		// 항상 403 FORBIDDEN 응답 되도록 작성
+		ResponseEntity<String> result = new ResponseEntity<String>(HttpStatus.FORBIDDEN);
 		
-		return null;
+		return result;
+	}
+	
+	@RequestMapping("/met04")
+	@ResponseBody
+	public ResponseEntity<String> method04() {
+		ResponseEntity<String> result = null;
+		
+		if (Math.random() > 0.5) {
+			result = ResponseEntity.status(HttpStatus.OK).body("hello data is ok");
+		} else {
+			result = ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+		}
+		
+		return result;
+		
 	}
 
 }
