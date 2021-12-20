@@ -68,13 +68,28 @@
   <script>
       $(document).ready(
           function() {
+            const oldNickName = $("#input5").val(); 
             const appRoot = '${pageContext.request.contextPath}';
             const infoForm = $("#infoForm");
             const modifyButton = $("#modifyButton");
             const removeButton = $("#removeButton");
 
-            let nickNameAble = false;
+            let nickNameAble = true;
             let passwordCheck = false;
+            
+            // 닉네임이 기존과 같지 않을 때만 중복확인버튼 활성화
+            $("#nickNameCheckButton").attr("disabled", true);
+            $("#input5").keyup(function() {
+              const typed = $("#input5").val();
+              if (oldNickName === typed) {
+                $("#nickNameCheckButton").attr("disabled", true);
+                nickNameAble = true;
+              } else {
+                $("#nickNameCheckButton").removeAttr("disabled");
+                nickNameAble = false;
+              }
+              enableSubmit();
+            });
             
             // 패스워드 확인과 닉네임 중복확인이 
             // 완료되었을 때만 수정버튼 활성화
