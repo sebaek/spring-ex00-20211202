@@ -180,63 +180,61 @@
             submitButton.attr("disabled", true);
             passwordInput.keyup(confirmFunction);
             passwordConfirmInput.keyup(confirmFunction);
-            
-            
+
             // nickNameCheckButton이 클릭되었을 때
             // nickName input의 값을 읽어서
             // /member/nickNameCheck 로 요청 보낸 결과에 따라
             // 메세지 출력 and 서브밋 버튼 활성화/비활성
-            $("#nickNameCheckButton").click(function() {
-              $("#nickNameCheckButton").attr("disabled", true);
-              
-              const nickName = $("#input5").val().trim();
-              
-              if (nickName === "") {
-                $("#nickNameCheckMessage").text("닉네임을 입력해주세요.")
-                	.removeClass("text-danger text-primary")
-                	.addClass("text-warning");
-                $("#nickNameCheckButton").removeAttr("disabled");
-                return;
-              }
-              
-              $.ajax({
-                url : appRoot + "/member/nickNameCheck",
-                data : {
-                  nickName : nickName
-                },
-                success : function(data) {
-                  switch (data) {
-                  case : "able"
-                  	// 사용가능 할 때
-                  	$("#nickNameCheckMessage")
-                  		.text("사용 가능한 닉네임입니다.")
-                  		.removeClass("text-warning text-danger")
-                  		.addClass("text-primary");
-                  	
-                  	nickNameAble = true;
-                  
-                  break;
-                  case : "unable"
-                  	// 사용 불가능 할 때
-                  	$("#nickNameCheckMessage")
-                  		.text("이미 있는 닉네임입니다.")
-                  		.removeClass("text-warning text-primary")
-                  		.addClass("text-danger");
-                  	
-                  	nickNameAble = false;
-                  	
-                  break;
+            $("#nickNameCheckButton").click(
+                function() {
+                  $("#nickNameCheckButton").attr("disabled", true);
+
+                  const nickName = $("#input5").val().trim();
+
+                  if (nickName === "") {
+                    $("#nickNameCheckMessage").text("닉네임을 입력해주세요.")
+                        .removeClass("text-danger text-primary").addClass(
+                            "text-warning");
+                    $("#nickNameCheckButton").removeAttr("disabled");
+                    return;
                   }
-                },
-                
-                complete : function() {
-                  enableSubmit();
-                  $("#nickNameCheckButton").removeAttr("disabled");
-                }
-                
-              });
-              
-            });
+
+                  $.ajax({
+                    url : appRoot + "/member/nickNameCheck",
+                    data : {
+                      nickName : nickName
+                    },
+                    success : function(data) {
+                      switch (data) {
+                      case "able":
+                        // 사용가능 할 때
+                        $("#nickNameCheckMessage").text("사용 가능한 닉네임입니다.")
+                            .removeClass("text-warning text-danger").addClass(
+                                "text-primary");
+
+                        nickNameAble = true;
+
+                        break;
+                      case "unable":
+                        // 사용 불가능 할 때
+                        $("#nickNameCheckMessage").text("이미 있는 닉네임입니다.")
+                            .removeClass("text-warning text-primary").addClass(
+                                "text-danger");
+
+                        nickNameAble = false;
+
+                        break;
+                      }
+                    },
+
+                    complete : function() {
+                      enableSubmit();
+                      $("#nickNameCheckButton").removeAttr("disabled");
+                    }
+
+                  });
+
+                });
           });
     </script>
 </body>
