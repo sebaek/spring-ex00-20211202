@@ -135,6 +135,8 @@
                         $("#idCheckMessage").text("사용 가능한 아이디 입니다.")
                             .removeClass("text-danger text-warning").addClass(
                                 "text-primary");
+                        
+                        $("#input1").attr("readonly", true);
 
                         // 서브밋 버튼 활성화 조건 추가
                         idAble = true;
@@ -211,6 +213,8 @@
                         $("#nickNameCheckMessage").text("사용 가능한 닉네임입니다.")
                             .removeClass("text-warning text-danger").addClass(
                                 "text-primary");
+                        
+                        $("#input5").attr("readonly", true);
 
                         nickNameAble = true;
 
