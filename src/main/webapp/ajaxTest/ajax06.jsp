@@ -51,10 +51,22 @@ $(document).ready(function() {
       }
     });
   });
+  
+  $("#btn04").click(function() {
+    $.ajax({
+      url : appRoot + "/cont16/met04",
+      success : function(data) {
+        console.log(data.id); // 30
+        console.log(data.lname); // donald
+        console.log(data.fname); // trump
+      }
+    });
+  });
 });
 </script>
 </head>
 <body>
+<button id="btn04">/cont16/met04 json data 응답 - 자동 변환</button>
 <button id="btn03">/cont16/met03 json data 응답 - 자동 변환</button>
 <button id="btn02">/cont16/met02 json data 응답</button>
 <button id="btn01">/cont16/met01 string data 응답</button>

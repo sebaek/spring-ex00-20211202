@@ -37,6 +37,12 @@ public class Controller16 {
 		
 		return b;
 	}
+	
+	
+	// TODO : /met04 경로로 왔을 때 일하는 requeset handler method 작성
+	// 리턴 타입 : org.zerock.controller.p05controller.bean.Bean12
+	// id, lname, fname 속성을 표현한 json 텍스트로 리턴
+	
 }
 
 
