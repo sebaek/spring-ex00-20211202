@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/icon/css/all.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <title>Insert title here</title>
 </head>
@@ -37,7 +38,13 @@
           </div>
           <div class="form-group">
             <label for="input5">닉네임</label>
-            <input type="text" required id="input5" class="form-control" name="nickName" value="${sessionScope.loggedInMember.nickName }">
+            <div class="input-group">
+              <input type="text" required id="input5" class="form-control" name="nickName" value="${sessionScope.loggedInMember.nickName }">
+              <div class="input-group-append">
+                <button class="btn btn-secondary" id="nickNameCheckButton" type="button">중복확인</button>
+              </div>
+            </div>
+            <small class="form-text" id="nickNameCheckMessage"></small>
           </div>
           <div class="form-group">
             <label for="input3">이메일</label>
@@ -56,49 +63,123 @@
   </div>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
   <script>
-      $(document).ready(function() {
-        // 수정버튼 또는 삭제버튼 클릭 시 form의 action 속성값 변경
-        const infoForm = $("#infoForm");
-        const modifyButton = $("#modifyButton");
-        const removeButton = $("#removeButton");
+      $(document).ready(
+          function() {
+            const appRoot = '${pageContext.request.contextPath}';
+            const infoForm = $("#infoForm");
+            const modifyButton = $("#modifyButton");
+            const removeButton = $("#removeButton");
 
-        modifyButton.click(function(e) {
-          e.preventDefault();
-          infoForm.attr("action", "");
-          infoForm.submit();
-        });
+            let nickNameAble = false;
+            let passwordCheck = false;
+            
+            // 패스워드 확인과 닉네임 중복확인이 
+            // 완료되었을 때만 수정버튼 활성화
+            const enableSubmit = function() {
+              if (passwordCheck && nickNameAble) {
+                modifyButton.removeAttr("disabled");
+              } else {
+                modifyButton.attr("disabled", true);
+              }
+            }
 
-        removeButton.click(function(e) {
-          e.preventDefault();
-          if (confirm("탈퇴하시겠습니까?")) {
-            infoForm.attr("action", "remove");
-            infoForm.submit();
-          }
-        });
+            // nickNameCheckButton 클릭 시 
+            // /member/nickNameCheck 로
+            // 작성한 nickName 전송해서
+            // 받은 결과에 따라
+            // 수정버튼 활성화 또는 비활성화 
+            // AND 적절한 메세지 출력
+            $("#nickNameCheckButton").click(
+                function() {
+                  $("#nickNameCheckButton").attr("disabled", true);
+                  
+                  const nickName = $("#input5").val().trim();
+                  
+                  if (nickName === "") {
+                    $("#nickNameCheckButton").removeAttr("disabled");
+                    return;
+                  }
 
-        // 패스워드, 패스워드확인 인풋요소 값 일치할 때만 수정버튼 활성화
-        const passwordInput = $("#input2");
-        const passwordConfirmInput = $("#input6");
-        const confirmFunction = function() {
-          const passwordValue = passwordInput.val();
-          const passwordConfirmValue = passwordConfirmInput.val();
+                  $.ajax({
+                    url : appRoot + "/member/nickNameCheck",
+                    data : {
+                      nickName : nickName
+                    },
+                    success : function(data) {
+                      switch (data) {
+                      case "able":
+                        // 사용가능 할 때
+                        $("#nickNameCheckMessage").text("사용 가능한 닉네임입니다.")
+                            .removeClass("text-warning text-danger").addClass(
+                                "text-primary");
+                        
+                        $("#input5").attr("readonly", true);
+                        
+                        nickNameAble = true;
+                        break;
 
-          if (passwordValue === passwordConfirmValue) {
-            modifyButton.removeAttr("disabled");
-          } else {
-            modifyButton.attr("disabled", true);
-          }
-        }
+                      case "unable":
+                        // 사용 불가능 할 때
+                        $("#nickNameCheckMessage").text("이미 있는 닉네임입니다.")
+                            .removeClass("text-warning text-primary").addClass(
+                                "text-danger");
+                        
+                        nickNameAble = false;
+                        break;
+                      default:
+                        break;
+                      }
+                    }, 
+                    complete : function() {
+                      enableSubmit();
+                      $("#nickNameCheckButton").removeAttr("disabled");
+                    }
+                  });
+                });
 
-        modifyButton.attr("disabled", true); // 수정 버튼 비활성화
+            // 수정버튼 또는 삭제버튼 클릭 시 form의 action 속성값 변경
 
-        passwordInput.keyup(confirmFunction);
-        passwordConfirmInput.keyup(confirmFunction);
-      });
+
+            modifyButton.click(function(e) {
+              e.preventDefault();
+              infoForm.attr("action", "");
+              infoForm.submit();
+            });
+
+            removeButton.click(function(e) {
+              e.preventDefault();
+              if (confirm("탈퇴하시겠습니까?")) {
+                infoForm.attr("action", "remove");
+                infoForm.submit();
+              }
+            });
+
+            // 패스워드, 패스워드확인 인풋요소 값 일치할 때만 수정버튼 활성화
+            const passwordInput = $("#input2");
+            const passwordConfirmInput = $("#input6");
+            const confirmFunction = function() {
+              const passwordValue = passwordInput.val();
+              const passwordConfirmValue = passwordConfirmInput.val();
+
+              if (passwordValue === passwordConfirmValue) {
+                passwordCheck = true;
+                // modifyButton.removeAttr("disabled");
+              } else {
+                passwordCheck = false;
+                // modifyButton.attr("disabled", true);
+              }
+              
+              enableSubmit();
+            }
+
+            modifyButton.attr("disabled", true); // 수정 버튼 비활성화
+
+            passwordInput.keyup(confirmFunction);
+            passwordConfirmInput.keyup(confirmFunction);
+          });
     </script>
 
 </body>
