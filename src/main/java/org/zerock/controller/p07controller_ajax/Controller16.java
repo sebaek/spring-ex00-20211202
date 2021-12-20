@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.zerock.controller.p05controller.bean.Bean10;
+import org.zerock.controller.p05controller.bean.Bean12;
 
 @Controller
 @RequestMapping("/cont16")
@@ -42,7 +43,17 @@ public class Controller16 {
 	// TODO : /met04 경로로 왔을 때 일하는 requeset handler method 작성
 	// 리턴 타입 : org.zerock.controller.p05controller.bean.Bean12
 	// id, lname, fname 속성을 표현한 json 텍스트로 리턴
-	
+	@RequestMapping("/met04")
+	@ResponseBody
+	public Bean12 method04() {
+		Bean12 b = new Bean12();
+		b.setId(30);
+		b.setLname("donald");
+		b.setFname("trump");
+		
+		return b;
+		
+	}
 }
 
 
