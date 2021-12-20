@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.zerock.controller.p05controller.bean.Bean10;
 import org.zerock.controller.p05controller.bean.Bean12;
+import org.zerock.domain.project1.BoardVO;
 import org.zerock.domain.project1.MemberVO;
+import org.zerock.mapper.project1.BoardMapper;
 import org.zerock.mapper.project1.MemberMapper;
 
 import lombok.Setter;
@@ -17,6 +19,9 @@ public class Controller16 {
 	
 	@Setter(onMethod_ = @Autowired)
 	private MemberMapper memberMapper;
+	
+	@Setter(onMethod_ = @Autowired)
+	private BoardMapper boardMapper;
 	
 
 	@RequestMapping("/met01")
@@ -69,6 +74,14 @@ public class Controller16 {
 	public MemberVO method05() {
 		MemberVO member = memberMapper.select("myid9");
 		return member;
+	}
+	
+	@RequestMapping("/met06")
+	@ResponseBody
+	public BoardVO method06() {
+		BoardVO board = boardMapper.read(2);
+		
+		return board;
 	}
 }
 

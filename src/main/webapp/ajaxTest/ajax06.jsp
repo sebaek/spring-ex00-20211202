@@ -75,6 +75,20 @@ $(document).ready(function() {
       }
     });
   });
+
+  $("#btn06").click(function() {
+    $.ajax({
+      url : appRoot + "/cont16/met06",
+      success : function(data) {
+        console.log(data);
+        console.log(data.id);
+        console.log(data.title);
+        console.log(data.content);
+        console.log(data.nickName);
+        console.log(data.customInserted);
+      }
+    });
+  });
 });
 </script>
 </head>
