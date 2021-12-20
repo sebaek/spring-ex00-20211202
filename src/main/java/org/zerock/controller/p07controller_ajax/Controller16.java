@@ -1,5 +1,7 @@
 package org.zerock.controller.p07controller_ajax;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -82,6 +84,14 @@ public class Controller16 {
 		BoardVO board = boardMapper.read(2);
 		
 		return board;
+	}
+	
+	@RequestMapping("/met07")
+	@ResponseBody
+	public List<BoardVO> method07() {
+		List<BoardVO> list = boardMapper.getListPage(0, 3);
+		
+		return list;
 	}
 }
 
