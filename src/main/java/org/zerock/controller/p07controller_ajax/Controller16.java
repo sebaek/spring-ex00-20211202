@@ -93,6 +93,12 @@ public class Controller16 {
 		
 		return list;
 	}
+	
+	@RequestMapping("/met08")
+	@ResponseBody
+	public List<MemberVO> method08() {
+		return memberMapper.listPage(0, 3);
+	}
 }
 
 

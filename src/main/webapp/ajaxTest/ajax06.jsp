@@ -102,6 +102,17 @@ $(document).ready(function() {
       }
     });
   });
+  
+  $("#btn08").click(function() {
+    $.ajax({
+      url : appRoot + "/cont16/met08",
+      success : function(data) {
+        for (let i = 0; i < data.length; i++) {
+          console.log(data[i].nickName);
+        }
+      }
+    });
+  });
 });
 </script>
 </head>
