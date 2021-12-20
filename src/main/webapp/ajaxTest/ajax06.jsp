@@ -62,10 +62,25 @@ $(document).ready(function() {
       }
     });
   });
+  
+  $("#btn05").click(function() {
+    $.ajax({
+      url : appRoot + "/cont16/met05",
+      success : function(data) {
+        console.log(data);
+        console.log(data.id);
+        console.log(data.password);
+        console.log(data.address);
+        console.log(data.email);
+      }
+    });
+  });
 });
 </script>
 </head>
 <body>
+<button id="btn06">/cont16/met06 하나의 Board 게시물 응답 (json) 받고 각 프로퍼티 출력</button>
+<button id="btn05">/cont16/met05 하나의 Member 응답 (json)</button>
 <button id="btn04">/cont16/met04 json data 응답 - 자동 변환</button>
 <button id="btn03">/cont16/met03 json data 응답 - 자동 변환</button>
 <button id="btn02">/cont16/met02 json data 응답</button>

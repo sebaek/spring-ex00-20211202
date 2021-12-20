@@ -1,14 +1,23 @@
 package org.zerock.controller.p07controller_ajax;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.zerock.controller.p05controller.bean.Bean10;
 import org.zerock.controller.p05controller.bean.Bean12;
+import org.zerock.domain.project1.MemberVO;
+import org.zerock.mapper.project1.MemberMapper;
+
+import lombok.Setter;
 
 @Controller
 @RequestMapping("/cont16")
 public class Controller16 {
+	
+	@Setter(onMethod_ = @Autowired)
+	private MemberMapper memberMapper;
+	
 
 	@RequestMapping("/met01")
 	@ResponseBody
@@ -53,6 +62,13 @@ public class Controller16 {
 		
 		return b;
 		
+	}
+	
+	@RequestMapping("/met05")
+	@ResponseBody
+	public MemberVO method05() {
+		MemberVO member = memberMapper.select("myid9");
+		return member;
 	}
 }
 
