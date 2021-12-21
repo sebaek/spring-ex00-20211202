@@ -21,12 +21,20 @@ $(document).ready(function() {
       url : appRoot + "/cont17/met01"
     });
   })
+  
+  $("#btn02").click(function() {
+    $.ajax({
+      url : appRoot + "/cont17/met02/" + 3231
+    });
+  })
 });
 </script>
 
 <title>Insert title here</title>
 </head>
 <body>
+<button id="btn03">/cont17/met03/number 요청 : controller에서 바뀔수있는 number를 sysout으로 출력</button>
+<button id="btn02">/cont17/met02/id 요청</button>
 <button id="btn01">/cont17/met01 요청</button>
 
 
