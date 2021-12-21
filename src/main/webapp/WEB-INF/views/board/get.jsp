@@ -91,11 +91,12 @@
   <div class="container">
     <div class="row">
       <div class="col">
+        <hr>
         <!-- .input-group>textarea#replyTextarea.form-control+.input-group-append>button.btn.btn-outline-secondary#sendReply -->
         <div class="input-group">
-        	<textarea name="" id="replyTextarea" cols="30" rows="10" class="form-control"></textarea>
+        	<textarea name="" id="replyTextarea" class="form-control"></textarea>
         	<div class="input-group-append">
-        		<button class="btn btn-outline-secondary" id="sendReply"></button>
+        		<button class="btn btn-outline-secondary" id="sendReply"><i class="far fa-comment-dots fa-lg"></i></button>
         	</div>
         </div>
         
