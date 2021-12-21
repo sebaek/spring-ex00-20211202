@@ -5,6 +5,11 @@
 
 <mapper namespace="org.zerock.mapper.project1.ReplyMapper">
 
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+	INSERT INTO Reply (boardId, memberId, reply)
+	VALUES (#{boardId}, #{memberId}, #{reply})
+	</insert>
+
 	<select id="list" resultType="org.zerock.domain.project1.ReplyVO">
 	SELECT
 		r.id,

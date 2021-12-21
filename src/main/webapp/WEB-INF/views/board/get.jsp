@@ -45,6 +45,24 @@
         
       }
     });
+    
+    /* 댓글 전송 */
+    $("#sendReply").click(function() {
+      const reply = $("#replyTextarea").val();
+      const memberId = '${sessionScope.loggedInMember.id}';
+      const boardId = '${board.id}';
+      
+      const data = {
+          reply : reply,
+          memberId : memberId,
+          boardId : boardId
+      };
+      $.ajax({
+        url : appRoot + "/reply/write",
+        type : "post",
+        data : data
+      });
+    });
   });
 </script>
 

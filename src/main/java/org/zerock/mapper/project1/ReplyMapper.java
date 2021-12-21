@@ -7,4 +7,6 @@ import org.zerock.domain.project1.ReplyVO;
 public interface ReplyMapper {
 
 	public List<ReplyVO> list(Integer boardId);
+
+	public int insert(ReplyVO reply);
 }

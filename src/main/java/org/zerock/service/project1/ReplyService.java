@@ -19,4 +19,19 @@ public class ReplyService {
 		
 		return mapper.list(boardId);
 	}
+
+	public boolean insert(ReplyVO reply) {
+
+		return mapper.insert(reply) == 1;
+	}
 }
+
+
+
+
+
+
+
+
+
+
