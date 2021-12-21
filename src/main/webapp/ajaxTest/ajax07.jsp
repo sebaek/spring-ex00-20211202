@@ -38,6 +38,20 @@ $(document).ready(function() {
 <title>Insert title here</title>
 </head>
 <body>
+<button id="btn02">/cont16/met07 요청 3개의 Board 응답 받은 data를 HTML 출력</button>
+<div id="result02">
+<!-- 
+<ul>
+	<li>429 : 안녕하세요~가입인사드려요!</li>
+	<li>428 : 스크립트</li>
+	<li>427 : <script>document</script></li>
+</ul>
+
+ -->
+
+</div>
+
+<hr>
 <button id="btn01">/cont16/met08 요청 3개의 Member 응답 받은 것을 HTML에 출력 (ul>li*3)</button>
 <div id="result01"></div>
 <hr>
