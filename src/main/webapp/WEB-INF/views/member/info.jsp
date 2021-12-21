@@ -16,7 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <b:navBar active="memberInfo"></b:navBar>
+  <b:navBar></b:navBar>
   <!-- .container>.row>.col>h1{회원정보} -->
   <div class="container">
     <div class="row">

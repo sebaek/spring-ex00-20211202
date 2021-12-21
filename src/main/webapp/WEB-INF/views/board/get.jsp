@@ -76,7 +76,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <b:navBar active="get"></b:navBar>
+  <b:navBar></b:navBar>
 
   <!-- .container>.row>.col>h1{게시물 조회} -->
   <div class="container">

@@ -15,7 +15,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <b:navBar active="list"></b:navBar>
+  <b:navBar></b:navBar>
 
   <!-- .container>.row>.col>h1{게시물 목록} -->
   <div class="container">
