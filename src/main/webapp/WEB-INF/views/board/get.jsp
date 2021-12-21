@@ -18,33 +18,34 @@
     /* contextPath */
     const appRoot = '${pageContext.request.contextPath}';
 
-    /* 현재 게시물의 댓글 목록 가져오기 */
-    $.ajax({
-      url : appRoot + "/reply/board/${board.id}",
-      success : function(list) {
-		
-        for (let i = 0; i < list.length; i++) {
-          const replyMediaObject = $(`
-          		<hr>
-                <div class="media">
-                <div class="media-body">
-                  <h5 class="mt-0"><i class="far fa-comment"></i>
-                  	<span class="reply-nickName"></span>
-                  	가 \${list[i].customInserted}에 작성</h5>
-                  <p class="reply-body"></p>
-                </div>
-              </div>`);
-          
-          replyMediaObject.find(".reply-nickName").text(list[i].nickName);
-          replyMediaObject.find(".reply-body").text(list[i].reply);
-          
-          
-          $("#replyListContainer").append(replyMediaObject);
+    /* 현재 게시물의 댓글 목록 가져오는 함수 */
+    const listReply = function() {
+      $("#replyListContainer").empty();
+      $.ajax({
+        url : appRoot + "/reply/board/${board.id}",
+        success : function(list) {
+          for (let i = 0; i < list.length; i++) {
+            const replyMediaObject = $(`
+            		<hr>
+                  <div class="media">
+                  <div class="media-body">
+                    <h5 class="mt-0"><i class="far fa-comment"></i>
+                    	<span class="reply-nickName"></span>
+                    	가 \${list[i].customInserted}에 작성</h5>
+                    <p class="reply-body"></p>
+                  </div>
+                </div>`);
+            
+            replyMediaObject.find(".reply-nickName").text(list[i].nickName);
+            replyMediaObject.find(".reply-body").text(list[i].reply);
+            
+            $("#replyListContainer").append(replyMediaObject);
+          }
         }
-        
-        
-      }
-    });
+      });
+    }
+    
+    listReply(); // 페이지 로딩 후 댓글 리스트 가져오는 함수 한 번 실행
     
     /* 댓글 전송 */
     $("#sendReply").click(function() {
@@ -60,7 +61,13 @@
       $.ajax({
         url : appRoot + "/reply/write",
         type : "post",
-        data : data
+        data : data,
+        success : function() {
+          // 댓글 리스트 새로고침
+          listReply();
+          // textarea reset
+          $("#replyTextarea").val("");
+        }
       });
     });
   });
@@ -105,6 +112,7 @@
     </div>
   </div>
 
+<c:if test="${not empty sessionScope.loggedInMember }">
   <!-- 댓글 작성 textarea container -->
   <div class="container">
     <div class="row">
@@ -121,6 +129,7 @@
       </div>
     </div>
   </div>
+</c:if>
 
 
   <!-- 댓글 container -->
