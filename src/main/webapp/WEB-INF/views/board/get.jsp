@@ -87,6 +87,23 @@
     </div>
   </div>
 
+  <!-- 댓글 작성 textarea container -->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <!-- .input-group>textarea#replyTextarea.form-control+.input-group-append>button.btn.btn-outline-secondary#sendReply -->
+        <div class="input-group">
+        	<textarea name="" id="replyTextarea" cols="30" rows="10" class="form-control"></textarea>
+        	<div class="input-group-append">
+        		<button class="btn btn-outline-secondary" id="sendReply"></button>
+        	</div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
   <!-- 댓글 container -->
   <div class="container">
     <div class="row">
