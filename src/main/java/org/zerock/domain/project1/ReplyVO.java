@@ -14,6 +14,8 @@ public class ReplyVO {
 	private String reply;
 	private LocalDateTime inserted;
 	private LocalDateTime updated;
+	
+	private String nickName;
 
 	public String getCustomInserted() {
 		// 현재일시

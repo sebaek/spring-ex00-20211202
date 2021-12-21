@@ -7,18 +7,19 @@
 
 	<select id="list" resultType="org.zerock.domain.project1.ReplyVO">
 	SELECT
-		id,
-		boardId,
-		memberId,
-		reply,
-		inserted,
-		updated
+		r.id,
+		r.boardId,
+		r.memberId,
+		r.reply,
+		r.inserted,
+		r.updated,
+		m.nickName
 	FROM 
-		Reply
+		Reply r JOIN Member m ON r.memberId = m.id
 	WHERE
-		boardId = #{boardId}
+		r.boardId = #{boardId}
 	ORDER BY 
-		id DESC
+		r.id DESC
 	
 	</select>
 

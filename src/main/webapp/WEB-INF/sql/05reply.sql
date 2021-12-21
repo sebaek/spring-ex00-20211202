@@ -20,7 +20,7 @@ INSERT INTO Reply (boardId, reply, memberId) VALUES (429, '테스트용 댓글!@
 SELECT * FROM Reply ORDER BY id DESC;
 
 
-
+SELECT r.*, m.nickName FROM Reply r JOIN Member m ON r.memberId = m.id;
 
 
 

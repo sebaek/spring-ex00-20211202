@@ -24,14 +24,19 @@
       success : function(list) {
 		
         for (let i = 0; i < list.length; i++) {
-          const replyMediaObject = `
+          const replyMediaObject = $(`
           		<hr>
                 <div class="media">
                 <div class="media-body">
-                  <h5 class="mt-0"><i class="far fa-comment"></i> \${list[i].memberId}가 \${list[i].customInserted}에 작성</h5>
-                  <p>\${list[i].reply}</p>
+                  <h5 class="mt-0"><i class="far fa-comment"></i>
+                  	<span class="reply-nickName"></span>
+                  	가 \${list[i].customInserted}에 작성</h5>
+                  <p class="reply-body"></p>
                 </div>
-              </div>`
+              </div>`);
+          
+          replyMediaObject.find(".reply-nickName").text(list[i].nickName);
+          replyMediaObject.find(".reply-body").text(list[i].reply);
           
           
           $("#replyListContainer").append(replyMediaObject);
@@ -83,8 +88,6 @@
   </div>
 
   <!-- 댓글 container -->
-  <hr>
-
   <div class="container">
     <div class="row">
       <div class="col">
