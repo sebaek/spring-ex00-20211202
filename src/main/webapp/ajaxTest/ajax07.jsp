@@ -32,6 +32,23 @@ $(document).ready(function() {
       }
     });
   });
+  
+  $("#btn02").click(function() {
+    $.ajax({
+      url : appRoot + "/cont16/met07",
+      success : function(data) {
+        
+        let ulElem = $("<ul />");
+        for (let i = 0; i < data.length; i++) {
+          let listItemContent = `\${data[i].id} : \${data[i].title}`;
+          let listItem = $("<li></li>").text(listItemContent);
+          ulElem.append(listItem);
+        }
+        
+        $("#result02").html(ulElem);
+      }
+    });
+  });
 });
 </script>
 
