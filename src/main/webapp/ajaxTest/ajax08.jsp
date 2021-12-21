@@ -45,12 +45,19 @@ $(document).ready(function() {
       url : appRoot + "/cont17/met05/999/ny"
     });
   });
+  
+  $("#btn06").click(function() {
+    $.ajax({
+      url : appRoot + "/cont17/met06/id/3333/city/seoul"
+    });
+  })
 });
 </script>
 
 <title>Insert title here</title>
 </head>
 <body>
+<button id="btn06">/cont17/met06/id/{id}/city/{city}</button>
 <button id="btn05">/cont17/met05/id/city</button>
 <button id="btn04">/cont17/met04/문자열</button>
 <button id="btn03">/cont17/met03/number 요청 : controller에서 바뀔수있는 number를 sysout으로 출력</button>
