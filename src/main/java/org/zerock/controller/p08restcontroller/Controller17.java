@@ -23,6 +23,19 @@ public class Controller17 {
 		return "hello2";
 	}
 	
+	@RequestMapping("/met03/{number}")
+	public String method03(@PathVariable Integer number) {
+		System.out.println(number);
+		
+		return "hello3";
+	}
+	
+	@RequestMapping("/met04/{str}")
+	public String method04(@PathVariable String str) {
+		System.out.println(str);
+		return str;
+	}
+	
 	
 }
 
