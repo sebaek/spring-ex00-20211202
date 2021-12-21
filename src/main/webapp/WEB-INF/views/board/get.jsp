@@ -28,7 +28,7 @@
           		<hr>
                 <div class="media">
                 <div class="media-body">
-                  <h5 class="mt-0"><i class="far fa-comment"></i> \${list[i].memberId}가 \${list[i].inserted}에 작성</h5>
+                  <h5 class="mt-0"><i class="far fa-comment"></i> \${list[i].memberId}가 \${list[i].customInserted}에 작성</h5>
                   <p>\${list[i].reply}</p>
                 </div>
               </div>`
