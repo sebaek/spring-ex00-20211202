@@ -1,16 +1,25 @@
 package org.zerock.controller.p08restcontroller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.zerock.domain.project1.BoardVO;
+import org.zerock.mapper.project1.BoardMapper;
+
+import lombok.Setter;
 
 @RestController
 @RequestMapping("/cont18")
 public class Controller18 {
+	
+	@Setter(onMethod_ = @Autowired)
+	private BoardMapper mapper;
 
 	@RequestMapping("/met01") 
 	public String method01() {
@@ -54,6 +63,11 @@ public class Controller18 {
 //	@RequestMapping(value = "/met08", method = RequestMethod.DELETE)
 	public String method08() {
 		return "";
+	}
+	
+	@GetMapping("/met09/{id}")
+	public BoardVO method09(@PathVariable Integer id) {
+		return mapper.read(id);
 	}
 }
 

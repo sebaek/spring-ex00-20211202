@@ -78,12 +78,34 @@ $(document).ready(function() {
       type : "delete"
     });
   });
+  
+  $("#btn04").click(function() {
+    const boardId = $("#boardId").val();
+    $.ajax({
+      url : appRoot + "/cont18/met09/" + boardId,
+      type : "get",
+      success : function(data) {
+        $("#title").text(data.title);
+        $("#body").text(data.content);
+      }
+    });
+  });
 });
 </script>
 
 <title>Insert title here</title>
 </head>
 <body>
+<input type="text" id="boardId">
+<button id="btn04">/cont18/met09/{id}</button>
+
+<div id="result">
+제목 : <span id="title"></span> <br>
+본문 : <span id="body"></span>
+</div>
+
+<hr>
+
 <button id="btn031">/cont18/met03 get</button>
 <button id="btn032">/cont18/met03 post</button>
 <button id="btn033">/cont18/met03 put</button>
