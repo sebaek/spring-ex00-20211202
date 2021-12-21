@@ -14,15 +14,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-$(document).ready(function() {
-  /* contextPath */
-  const appRoot = '${pageContext.request.contextPath}';
-  
-  /* 현재 게시물의 댓글 목록 가져오기 */
-  $.ajax({
-    url : appRoot + "/reply/board/${board.id}"
+  $(document).ready(function() {
+    /* contextPath */
+    const appRoot = '${pageContext.request.contextPath}';
+
+    /* 현재 게시물의 댓글 목록 가져오기 */
+    $.ajax({
+      url : appRoot + "/reply/board/${board.id}",
+      success : function(list) {
+		
+        for (let i = 0; i < list.length; i++) {
+          const replyMediaObject = `
+          		<hr>
+                <div class="media">
+                <div class="media-body">
+                  <h5 class="mt-0"><i class="far fa-comment"></i> \${list[i].memberId}가 \${list[i].inserted}에 작성</h5>
+                  <p>\${list[i].reply}</p>
+                </div>
+              </div>`
+          
+          
+          $("#replyListContainer").append(replyMediaObject);
+        }
+        
+        
+      }
+    });
   });
-});
 </script>
 
 <title>Insert title here</title>
@@ -52,14 +70,27 @@ $(document).ready(function() {
           </div>
 
           <!-- a.btn.btn-outline-secondary>i.far.fa-edit -->
-          
+
           <c:if test="${sessionScope.loggedInMember.id eq board.writer }">
             <a href="modify?id=${board.id }" class="btn btn-outline-secondary">
               수정/삭제
-            	<!-- <i class="far fa-edit"></i> -->
+              <!-- <i class="far fa-edit"></i> -->
             </a>
           </c:if>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 댓글 container -->
+  <hr>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+
+        <div id="replyListContainer"></div>
+
       </div>
     </div>
   </div>
