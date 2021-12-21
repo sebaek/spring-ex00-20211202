@@ -50,12 +50,47 @@ $(document).ready(function() {
       type : "delete"
     });
   });
+  
+  $("#btn031").click(function() {
+    $.ajax({
+      url : appRoot + "/cont18/met03",
+      type : "get"
+    });
+  });
+  
+  $("#btn032").click(function() {
+    $.ajax({
+      url : appRoot + "/cont18/met03",
+      type : "post"
+    });
+  });
+  
+  $("#btn033").click(function() {
+    $.ajax({
+      url : appRoot + "/cont18/met03",
+      type : "put"
+    });
+  });
+  
+  $("#btn034").click(function() {
+    $.ajax({
+      url : appRoot + "/cont18/met03",
+      type : "delete"
+    });
+  });
 });
 </script>
 
 <title>Insert title here</title>
 </head>
 <body>
+<button id="btn031">/cont18/met03 get</button>
+<button id="btn032">/cont18/met03 post</button>
+<button id="btn033">/cont18/met03 put</button>
+<button id="btn034">/cont18/met03 delete</button>
+
+
+<hr>
 
 <button id="btn021">/cont18/met02 get</button>
 <button id="btn022">/cont18/met02 post</button>

@@ -1,5 +1,9 @@
 package org.zerock.controller.p08restcontroller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +31,46 @@ public class Controller18 {
 	public String method04() {
 		return "hello";
 	}
+	
+	@GetMapping("/met05")
+//	@RequestMapping(value = "/met05", method = RequestMethod.GET)
+	public String method05() {
+		return "";
+	}
+	
+	@PostMapping("/met06")
+//	@RequestMapping(value = "/met06", method = RequestMethod.POST)
+	public String method06() {
+		return "";
+	}
+	
+	@PutMapping("/met07")
+//	@RequestMapping(value = "/met07", method = RequestMethod.PUT)
+	public String method07() {
+		return "";
+	}
+	
+	@DeleteMapping("/met08")
+//	@RequestMapping(value = "/met08", method = RequestMethod.DELETE)
+	public String method08() {
+		return "";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
