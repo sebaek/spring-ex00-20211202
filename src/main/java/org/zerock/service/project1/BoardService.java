@@ -38,11 +38,6 @@ public class BoardService {
 		// 1. 게시물 달린 댓글 지우기
 		replyMapper.deleteByBoardId(id);
 		
-		int i = 2;
-		int j = 0;
-		
-		int k = i / j; // divide 0 exception
-		
 		// 2. 게시물 지우기
 		return mapper.delete(id) == 1;
 	}
