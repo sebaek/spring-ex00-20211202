@@ -29,11 +29,11 @@ public class ReplyController {
 		
 		List<ReplyVO> list = service.list(boardId);
 		
+		System.out.println("board/boardid : " + loggedIn);
 		if (loggedIn != null) {
-			
 			for (ReplyVO reply : list) {
 				String writerId = reply.getMemberId();
-				reply.setOwn(loggedIn.getId() == writerId);
+				reply.setOwn(loggedIn.getId().equals(writerId));
 			}
 		}
 		
