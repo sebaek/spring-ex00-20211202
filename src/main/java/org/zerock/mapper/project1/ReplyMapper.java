@@ -15,4 +15,6 @@ public interface ReplyMapper {
 	public int update(ReplyVO newReply);
 
 	public int delete(Integer id);
+
+	public int deleteByBoardId(Integer boardId);
 }
