@@ -37,6 +37,7 @@
                       <div class="input-group" style="display:none;">
                 	    <textarea name="" id="replyTextarea\${list[i].id}" class="form-control"></textarea>
                 	    <div class="input-group-append">
+                	      <button class="btn btn-outline-secondary cancel-button"><i class="fas fa-ban"></i></button>
                   		  <button class="btn btn-outline-secondary" id="sendReply\${list[i].id}"><i class="far fa-comment-dots fa-lg"></i></button>
                 	    </div>
                       </div>
@@ -46,6 +47,10 @@
             replyMediaObject.find(".reply-nickName").text(list[i].nickName);
             replyMediaObject.find(".reply-body").text(list[i].reply);
             replyMediaObject.find(".form-control").text(list[i].reply);
+            replyMediaObject.find(".cancel-button").click(function() {
+              replyMediaObject.find(".reply-body").show();
+              replyMediaObject.find(".input-group").hide();
+            });
             
             if (list[i].own) {
               const modifyButton = $("<button class='btn btn-outline-secondary'><i class='far fa-edit'></i></button>");
