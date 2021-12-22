@@ -9,4 +9,8 @@ public interface ReplyMapper {
 	public List<ReplyVO> list(Integer boardId);
 
 	public int insert(ReplyVO reply);
+
+	public ReplyVO selectById(Integer id);
+
+	public int update(ReplyVO newReply);
 }

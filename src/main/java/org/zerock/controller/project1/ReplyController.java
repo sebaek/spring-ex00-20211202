@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +33,7 @@ public class ReplyController {
 		
 		List<ReplyVO> list = service.list(boardId);
 		
-		System.out.println("board/boardid : " + loggedIn);
+//		System.out.println("board/boardid : " + loggedIn);
 		if (loggedIn != null) {
 			for (ReplyVO reply : list) {
 				String writerId = reply.getMemberId();
@@ -51,11 +53,26 @@ public class ReplyController {
 	}
 	
 	@PutMapping("/{id}")
-	public ReplyVO modify(@PathVariable Integer id, @RequestBody ReplyVO reply) {
-		System.out.println(id);
-		System.out.println(reply.getReply());
-
-		return null;
+	public ResponseEntity<String> modify(@PathVariable Integer id, @RequestBody ReplyVO reply, HttpSession session) {
+//		System.out.println(id);
+//		System.out.println(reply.getReply());
+		
+		// 로그인한 멤버
+		MemberVO logged = (MemberVO) session.getAttribute("loggedInMember");
+		
+		// 댓글 조회
+		ReplyVO old = service.readById(id);
+		// 로그인된 멤버의 아이디와 댓글작성한 사람 아이디가 같을 때만
+		if (logged != null && logged.getId().equals(old.getMemberId())) {
+			// 업데이트
+			old.setReply(reply.getReply());
+			service.update(old);
+			
+			return ResponseEntity.ok("");
+		} else {
+			// 권한 없음
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+		}
 	}
 }
 
