@@ -39,6 +39,10 @@
             replyMediaObject.find(".reply-nickName").text(list[i].nickName);
             replyMediaObject.find(".reply-body").text(list[i].reply);
             
+            if (list[i].own) {
+              replyMediaObject.find(".media-body").append("<button class='btn btn-outline-secondary'>수정</button>");
+            }
+            
             $("#replyListContainer").append(replyMediaObject);
           }
         }
