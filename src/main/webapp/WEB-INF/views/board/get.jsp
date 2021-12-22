@@ -28,19 +28,33 @@
             const replyMediaObject = $(`
             		<hr>
                   <div class="media">
-                  <div class="media-body">
-                    <h5 class="mt-0"><i class="far fa-comment"></i>
-                    	<span class="reply-nickName"></span>
+                    <div class="media-body">
+                      <h5 class="mt-0"><i class="far fa-comment"></i>
+                      <span class="reply-nickName"></span>
                     	가 \${list[i].customInserted}에 작성</h5>
-                    <p class="reply-body"></p>
-                  </div>
-                </div>`);
+                      <p class="reply-body"></p>
+                    
+                      <div class="input-group" style="display:none;">
+                	    <textarea name="" id="replyTextarea\${list[i].id}" class="form-control"></textarea>
+                	    <div class="input-group-append">
+                  		  <button class="btn btn-outline-secondary" id="sendReply\${list[i].id}"><i class="far fa-comment-dots fa-lg"></i></button>
+                	    </div>
+                      </div>
+                    </div>
+                  </div>`);
             
             replyMediaObject.find(".reply-nickName").text(list[i].nickName);
             replyMediaObject.find(".reply-body").text(list[i].reply);
+            replyMediaObject.find(".form-control").text(list[i].reply);
             
             if (list[i].own) {
-              replyMediaObject.find(".media-body").append("<button class='btn btn-outline-secondary'>수정</button>");
+              const modifyButton = $("<button class='btn btn-outline-secondary'><i class='far fa-edit'></i></button>");
+              modifyButton.click(function() {
+                $(this).parent().find('.reply-body').hide();
+                $(this).parent().find('.input-group').show();
+              });
+              
+              replyMediaObject.find(".media-body").append(modifyButton);
             }
             
             $("#replyListContainer").append(replyMediaObject);
