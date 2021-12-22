@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.zerock.domain.project1.MemberVO;
 import org.zerock.domain.project1.ReplyVO;
 import org.zerock.service.project1.ReplyService;
@@ -46,9 +47,9 @@ public class ReplyController {
 	}
 
 	@PostMapping("/write")
-	public ResponseEntity<String> write(ReplyVO reply, HttpSession session) {
+	public ResponseEntity<String> write(ReplyVO reply, @SessionAttribute(value = "loggedInMember", required = false) MemberVO logged) {
 		// 로그인한 멤버
-		MemberVO logged = (MemberVO) session.getAttribute("loggedInMember");
+//		MemberVO logged = (MemberVO) session.getAttribute("loggedInMember");
 		
 		if (logged != null && logged.getId().equals(reply.getMemberId())) {
 			service.insert(reply);
@@ -59,12 +60,12 @@ public class ReplyController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<String> modify(@PathVariable Integer id, @RequestBody ReplyVO reply, HttpSession session) {
+	public ResponseEntity<String> modify(@PathVariable Integer id, @RequestBody ReplyVO reply, @SessionAttribute(value = "loggedInMember", required = false) MemberVO logged) {
 //		System.out.println(id);
 //		System.out.println(reply.getReply());
 
 		// 로그인한 멤버
-		MemberVO logged = (MemberVO) session.getAttribute("loggedInMember");
+//		MemberVO logged = (MemberVO) session.getAttribute("loggedInMember");
 
 		// 댓글 조회
 		ReplyVO old = service.readById(id);
@@ -82,9 +83,9 @@ public class ReplyController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> remove(@PathVariable Integer id, HttpSession session) {
+	public ResponseEntity<String> remove(@PathVariable Integer id, @SessionAttribute(value = "loggedInMember", required = false) MemberVO logged) {
 		// 로그인한 멤버
-		MemberVO logged = (MemberVO) session.getAttribute("loggedInMember");
+//		MemberVO logged = (MemberVO) session.getAttribute("loggedInMember");
 
 		// 댓글 조회
 		ReplyVO old = service.readById(id);
