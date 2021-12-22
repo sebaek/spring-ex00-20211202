@@ -46,13 +46,15 @@
             
             replyMediaObject.find("#sendReply" + list[i].id).click(function() {
               const reply = replyMediaObject.find("#replyTextarea" + list[i].id).val();
+              const data = {
+                reply : reply
+              };
               
               $.ajax({
                 url : appRoot + "/reply/" + list[i].id,
                 type : "put",
-                data : {
-                  reply : reply
-                },
+                contentType : "application/json",
+                data : JSON.stringify(data),
                 complete : function() {
                   listReply();
                 }
