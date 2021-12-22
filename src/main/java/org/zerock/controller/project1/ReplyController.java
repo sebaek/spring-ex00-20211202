@@ -46,11 +46,16 @@ public class ReplyController {
 	}
 
 	@PostMapping("/write")
-	public ReplyVO write(ReplyVO reply) {
-
-		service.insert(reply);
-
-		return null;
+	public ResponseEntity<String> write(ReplyVO reply, HttpSession session) {
+		// 로그인한 멤버
+		MemberVO logged = (MemberVO) session.getAttribute("loggedInMember");
+		
+		if (logged != null && logged.getId().equals(reply.getMemberId())) {
+			service.insert(reply);
+			return ResponseEntity.status(HttpStatus.OK).build();
+		} else {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+		}
 	}
 
 	@PutMapping("/{id}")

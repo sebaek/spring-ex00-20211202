@@ -121,10 +121,15 @@
         type : "post",
         data : data,
         success : function() {
-          // 댓글 리스트 새로고침
-          listReply();
           // textarea reset
           $("#replyTextarea").val("");
+        },
+        error : function() {
+          alert("댓글이 작성되지 않았습니다. 권한이 있는 지 확인해보세요.");
+        },
+        complete : function() {
+          // 댓글 리스트 새로고침
+          listReply();
         }
       });
     });
