@@ -4,6 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.zerock.mapper.project1.ReplyMapper">
+	<delete id="delete">
+	DELETE FROM Reply WHERE id = #{id}
+	</delete>
+
 	<update id="update">
 	UPDATE Reply
 	SET

@@ -70,6 +70,8 @@
             });
             
             if (list[i].own) {
+              // 본인이 작성한 것만 
+              // 수정버튼 추가
               const modifyButton = $("<button class='btn btn-outline-secondary'><i class='far fa-edit'></i></button>");
               modifyButton.click(function() {
                 $(this).parent().find('.reply-body').hide();
@@ -77,6 +79,22 @@
               });
               
               replyMediaObject.find(".media-body").append(modifyButton);
+              
+              // 삭제버튼 추가
+              const removeButton = $("<button class='btn btn-outline-danger'><i class='far fa-trash-alt'></i></button>");
+              removeButton.click(function() {
+                if (confirm("삭제 하시겠습니까?")) {
+                  $.ajax({
+                    url : appRoot + "/reply/" + list[i].id,
+                    type : "delete",
+                    complete : function() {
+                      listReply();
+                    }
+                  });
+                }
+              });
+              
+              replyMediaObject.find(".media-body").append(removeButton);
             }
             
             $("#replyListContainer").append(replyMediaObject);

@@ -33,6 +33,10 @@ public class ReplyService {
 
 		return mapper.update(newReply) == 1;
 	}
+
+	public boolean delete(Integer id) {
+		return mapper.delete(id) == 1;
+	}
 }
 
 

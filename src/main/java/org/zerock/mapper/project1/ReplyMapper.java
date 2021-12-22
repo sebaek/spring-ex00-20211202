@@ -13,4 +13,6 @@ public interface ReplyMapper {
 	public ReplyVO selectById(Integer id);
 
 	public int update(ReplyVO newReply);
+
+	public int delete(Integer id);
 }
