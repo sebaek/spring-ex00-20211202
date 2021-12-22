@@ -44,6 +44,21 @@
                     </div>
                   </div>`);
             
+            replyMediaObject.find("#sendReply" + list[i].id).click(function() {
+              const reply = replyMediaObject.find("#replyTextarea" + list[i].id).val();
+              
+              $.ajax({
+                url : appRoot + "/reply/" + list[i].id,
+                type : "put",
+                data : {
+                  reply : reply
+                },
+                complete : function() {
+                  listReply();
+                }
+              });
+            });
+            
             replyMediaObject.find(".reply-nickName").text(list[i].nickName);
             replyMediaObject.find(".reply-body").text(list[i].reply);
             replyMediaObject.find(".form-control").text(list[i].reply);

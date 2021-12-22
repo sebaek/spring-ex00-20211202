@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.zerock.domain.project1.MemberVO;
 import org.zerock.domain.project1.ReplyVO;
@@ -45,6 +47,14 @@ public class ReplyController {
 		
 		service.insert(reply);
 		
+		return null;
+	}
+	
+	@PutMapping("/{id}")
+	public ReplyVO modify(@PathVariable Integer id, @RequestParam("reply") String reply) {
+		System.out.println(id);
+		System.out.println(reply);
+
 		return null;
 	}
 }
