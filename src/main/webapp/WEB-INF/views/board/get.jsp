@@ -32,7 +32,7 @@
                       <h5 class="mt-0"><i class="far fa-comment"></i>
                       <span class="reply-nickName"></span>
                     	가 \${list[i].customInserted}에 작성</h5>
-                      <p class="reply-body"></p>
+                      <p class="reply-body" style="white-space: pre;"></p>
                     
                       <div class="input-group" style="display:none;">
                 	    <textarea name="" id="replyTextarea\${list[i].id}" class="form-control"></textarea>
