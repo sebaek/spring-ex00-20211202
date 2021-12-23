@@ -8,3 +8,9 @@ CREATE TABLE File (
 );
 
 DESC File;
+
+SELECT * FROM File ORDER BY boardId DESC, id ASC;
+
+INSERT INTO File (boardId, fileName)
+SELECT '507' as boardId, fileName FROM File WHERE boardId = 508;
+
