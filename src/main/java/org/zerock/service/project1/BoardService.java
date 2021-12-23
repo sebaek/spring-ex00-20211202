@@ -104,9 +104,12 @@ public class BoardService {
 		
 		// write files
 		String basePath = staticRoot + board.getId();
-		// 1. 새 게시물 id 이름의 folder 만들기
-		File newFolder = new File(basePath);
-		newFolder.mkdirs();
+		if (files[0].getSize() > 0) {
+			// files가 있을 때만 폴더 생성
+			// 1. 새 게시물 id 이름의 folder 만들기
+			File newFolder = new File(basePath);
+			newFolder.mkdirs();
+		}
 		// 2. 위 폴더에 files 쓰기
 		for (MultipartFile file : files) {
 			
@@ -130,6 +133,14 @@ public class BoardService {
 	@Transactional
 	public boolean modify(BoardVO board, MultipartFile[] files) throws IllegalStateException, IOException {
 		modify(board);
+		
+		String basePath = staticRoot + board.getId();
+		if (files[0].getSize() > 0) {
+			// files가 있을 때만 폴더 생성
+			// 1. 새 게시물 id 이름의 folder 만들기
+			File newFolder = new File(basePath);
+			newFolder.mkdirs();
+		}
 		
 		for (MultipartFile file : files) {
 			if (file != null && file.getSize() > 0) {
