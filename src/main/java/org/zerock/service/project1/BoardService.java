@@ -21,13 +21,13 @@ public class BoardService {
 
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
-	
+
 	@Setter(onMethod_ = @Autowired)
 	private ReplyMapper replyMapper;
-	
+
 	@Setter(onMethod_ = @Autowired)
 	private FileMapper fileMapper;
-	
+
 	private String staticRoot = "C:\\Users\\user\\Desktop\\course\\fileupload\\";
 
 	public boolean register(BoardVO board) {
@@ -46,8 +46,25 @@ public class BoardService {
 	public boolean remove(Integer id) {
 		// 1. 게시물 달린 댓글 지우기
 		replyMapper.deleteByBoardId(id);
+
+		// 2. 파일 지우기
+		// file system에서 삭제
+		String[] files = fileMapper.selectNamesByBoardId(id);
+
+		if (files != null) {
+			for (String file : files) {
+				String path = staticRoot + id + "\\" + file;
+				File target = new File(path);
+				if (target.exists()) {
+					target.delete();
+				}
+			}
+		}
 		
-		// 2. 게시물 지우기
+		// db 에서 삭제
+		fileMapper.deleteByBoardId(id);
+
+		// 3. 게시물 지우기
 		return mapper.delete(id) == 1;
 	}
 
@@ -76,11 +93,11 @@ public class BoardService {
 		// 페이지네이션 가장 오른쪽 번호
 		Integer rightPageNumber = (page - 1) / 10 * 10 + 10;
 		// 가장 마지막 페이지를 넘어가지 않도록
-		rightPageNumber = rightPageNumber > lastPage ? lastPage : rightPageNumber; 
-		
+		rightPageNumber = rightPageNumber > lastPage ? lastPage : rightPageNumber;
+
 		// 이전 페이지 버튼 존재 유무
 		Boolean hasPrevButton = leftPageNumber != 1;
-		
+
 		// 다음 페이지 버튼 존재 유무
 		Boolean hasNextButton = rightPageNumber != lastPage;
 
@@ -101,7 +118,7 @@ public class BoardService {
 	public void register(BoardVO board, MultipartFile[] files) throws IllegalStateException, IOException {
 
 		register(board);
-		
+
 		// write files
 		String basePath = staticRoot + board.getId();
 		if (files[0].getSize() > 0) {
@@ -112,18 +129,17 @@ public class BoardService {
 		}
 		// 2. 위 폴더에 files 쓰기
 		for (MultipartFile file : files) {
-			
+
 			if (file != null && file.getSize() > 0) {
 				// 2.1 파일 작성, FILE SYSTEM
 				String path = basePath + "\\" + file.getOriginalFilename();
 				file.transferTo(new File(path));
-				
+
 				// 2.2 insert into File , DATABSE
 				fileMapper.insert(board.getId(), file.getOriginalFilename());
 			}
 		}
-		
-		
+
 	}
 
 	public String[] getFileNamesByBoardId(Integer id) {
@@ -131,9 +147,10 @@ public class BoardService {
 	}
 
 	@Transactional
-	public boolean modify(BoardVO board, String[] removeFile, MultipartFile[] files) throws IllegalStateException, IOException {
+	public boolean modify(BoardVO board, String[] removeFile, MultipartFile[] files)
+			throws IllegalStateException, IOException {
 		modify(board);
-		
+
 		String basePath = staticRoot + board.getId();
 		// 파일 삭제
 		if (removeFile != null) {
@@ -141,17 +158,17 @@ public class BoardService {
 				// file system에서 삭제
 				String path = basePath + "\\" + removeFileName;
 				File target = new File(path);
-				
+
 				if (target.exists()) {
 					target.delete();
 				}
-				
+
 				// db table에서 삭제
 				fileMapper.delete(board.getId(), removeFileName);
-				
+
 			}
 		}
-		
+
 		// 새 파일 추가
 		if (files[0].getSize() > 0) {
 			// files가 있을 때만 폴더 생성
@@ -159,35 +176,21 @@ public class BoardService {
 			File newFolder = new File(basePath);
 			newFolder.mkdirs();
 		}
-		
+
 		for (MultipartFile file : files) {
 			if (file != null && file.getSize() > 0) {
 				// 1. write file to fileSystem
 				File newFile = new File(staticRoot + "\\" + board.getId() + "\\" + file.getOriginalFilename());
-				
+
 				if (!newFile.exists()) {
 					// 2. db 파일명 insert
 					fileMapper.insert(board.getId(), file.getOriginalFilename());
 				}
-				
+
 				file.transferTo(newFile);
 			}
 		}
-		
-		
+
 		return false;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

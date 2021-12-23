@@ -10,4 +10,6 @@ public interface FileMapper {
 
 	void delete(@Param("boardId") Integer boardId, @Param("fileName") String fileName);
 
+	void deleteByBoardId(Integer boardId);
+
 }
