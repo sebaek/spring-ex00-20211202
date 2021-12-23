@@ -18,6 +18,8 @@ public class BoardVO {
 	private String nickName;
 	
 	private Integer replyCount;
+	
+	private Boolean hasFile;
 
 	public String getCustomInserted() {
 		// 현재일시

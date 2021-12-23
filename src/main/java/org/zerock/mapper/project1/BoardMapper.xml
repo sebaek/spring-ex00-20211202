@@ -26,7 +26,8 @@ SELECT
     b.inserted,
     b.updated,
     m.nickName,
-    COUNT(r.id) replyCount
+    COUNT(r.id) replyCount,
+    (SELECT EXISTS (SELECT * FROM File WHERE boardId = b.id)) hasFile
 FROM
     Board b
         JOIN

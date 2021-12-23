@@ -40,8 +40,8 @@
           </div>
           <c:forEach items="${fileNames }" var="fileName">
             <div class="row">
-              <div class="col-1">
-                <input type="checkbox" name="removeFile" value="${fileName }">
+              <div class="col-1 d-flex justify-content-center align-items-center">
+                <input class="form-check-input" type="checkbox" name="removeFile" value="${fileName }">
               </div>
               <div class="col-11">
                 <img class="img-fluid" src="/static/${board.id }/${fileName }" alt="${fileName }">
