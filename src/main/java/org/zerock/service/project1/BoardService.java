@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.zerock.domain.project1.BoardVO;
 import org.zerock.domain.project1.PageInfoVO;
 import org.zerock.mapper.project1.BoardMapper;
+import org.zerock.mapper.project1.FileMapper;
 import org.zerock.mapper.project1.ReplyMapper;
 
 import lombok.Setter;
@@ -23,6 +24,9 @@ public class BoardService {
 	
 	@Setter(onMethod_ = @Autowired)
 	private ReplyMapper replyMapper;
+	
+	@Setter(onMethod_ = @Autowired)
+	private FileMapper fileMapper;
 
 	public boolean register(BoardVO board) {
 		return mapper.insert(board) == 1;
@@ -103,11 +107,18 @@ public class BoardService {
 		newFolder.mkdirs();
 		// 2. 위 폴더에 files 쓰기
 		for (MultipartFile file : files) {
+			
 			if (file != null && file.getSize() > 0) {
+				// 2.1 파일 작성, FILE SYSTEM
 				String path = basePath + "\\" + file.getOriginalFilename();
 				file.transferTo(new File(path));
+				
+				// 2.2 insert into File , DATABSE
+				fileMapper.insert(board.getId(), file.getOriginalFilename());
 			}
 		}
+		
+		
 	}
 }
 
