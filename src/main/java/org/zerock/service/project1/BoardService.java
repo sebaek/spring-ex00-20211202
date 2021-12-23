@@ -28,7 +28,7 @@ public class BoardService {
 	@Setter(onMethod_ = @Autowired)
 	private FileMapper fileMapper;
 
-	private String staticRoot = "C:\\Users\\user\\Desktop\\course\\fileupload\\";
+	private String staticRoot = "C:\\Users\\user\\Desktop\\course\\fileupload\\board\\";
 
 	public boolean register(BoardVO board) {
 		return mapper.insert(board) == 1;

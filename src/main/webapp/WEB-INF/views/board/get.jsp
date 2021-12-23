@@ -161,7 +161,7 @@
           <c:forEach items="${fileNames }" var="fileName">
             <div class="row">
               <div class="col">
-                <img class="img-fluid" src="/static/${board.id }/${fileName }" alt="${fileName }">
+                <img class="img-fluid" src="/static/board/${board.id }/${fileName }" alt="${fileName }">
               </div>
             </div>
           </c:forEach>
