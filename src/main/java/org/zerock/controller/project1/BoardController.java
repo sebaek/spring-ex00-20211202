@@ -56,10 +56,15 @@ public class BoardController {
 	}
 
 	@PostMapping("/modify")
-	public String modify(BoardVO board, RedirectAttributes rttr) {
+	public String modify(BoardVO board, MultipartFile[] files, RedirectAttributes rttr) {
 
-		if (service.modify(board)) {
-			rttr.addFlashAttribute("result", board.getId() + "번 게시글이 수정되었습니다.");
+		try {
+			if (service.modify(board, files)) {
+				rttr.addFlashAttribute("result", board.getId() + "번 게시글이 수정되었습니다.");
+			}
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+			rttr.addFlashAttribute("result", board.getId() + "번 게시글 수정 중 문제가 발생하였습니다.");
 		}
 
 		// 게시물 조회로 redirect

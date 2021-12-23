@@ -27,6 +27,8 @@ public class BoardService {
 	
 	@Setter(onMethod_ = @Autowired)
 	private FileMapper fileMapper;
+	
+	private String staticRoot = "C:\\Users\\user\\Desktop\\course\\fileupload\\";
 
 	public boolean register(BoardVO board) {
 		return mapper.insert(board) == 1;
@@ -101,7 +103,7 @@ public class BoardService {
 		register(board);
 		
 		// write files
-		String basePath = "C:\\Users\\user\\Desktop\\course\\fileupload\\" + board.getId();
+		String basePath = staticRoot + board.getId();
 		// 1. 새 게시물 id 이름의 folder 만들기
 		File newFolder = new File(basePath);
 		newFolder.mkdirs();
@@ -123,6 +125,28 @@ public class BoardService {
 
 	public String[] getFileNamesByBoardId(Integer id) {
 		return fileMapper.selectNamesByBoardId(id);
+	}
+
+	@Transactional
+	public boolean modify(BoardVO board, MultipartFile[] files) throws IllegalStateException, IOException {
+		modify(board);
+		
+		for (MultipartFile file : files) {
+			if (file != null && file.getSize() > 0) {
+				// 1. write file to fileSystem
+				File newFile = new File(staticRoot + "\\" + board.getId() + "\\" + file.getOriginalFilename());
+				
+				if (!newFile.exists()) {
+					// 2. db 파일명 insert
+					fileMapper.insert(board.getId(), file.getOriginalFilename());
+				}
+				
+				file.transferTo(newFile);
+			}
+		}
+		
+		
+		return false;
 	}
 }
 

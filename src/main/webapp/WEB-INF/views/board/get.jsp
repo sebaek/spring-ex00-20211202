@@ -157,11 +157,15 @@
             <!-- <input type="text" class="form-control" id="input2" readonly=""> -->
             <textarea class="form-control" id="input2" readonly>${board.content }</textarea>
           </div>
-          
+
           <c:forEach items="${fileNames }" var="fileName">
-            <img src="/static/${board.id }/${fileName }" alt="${fileName }">
+            <div class="row">
+              <div class="col">
+                <img class="img-fluid" src="/static/${board.id }/${fileName }" alt="${fileName }">
+              </div>
+            </div>
           </c:forEach>
-          
+
           <div class="form-group">
             <label for="input3">작성자</label>
             <input type="text" class="form-control" id="input3" readonly value="${board.nickName }">
@@ -180,24 +184,26 @@
     </div>
   </div>
 
-<c:if test="${not empty sessionScope.loggedInMember }">
-  <!-- 댓글 작성 textarea container -->
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <hr>
-        <!-- .input-group>textarea#replyTextarea.form-control+.input-group-append>button.btn.btn-outline-secondary#sendReply -->
-        <div class="input-group">
-        	<textarea name="" id="replyTextarea" class="form-control"></textarea>
-        	<div class="input-group-append">
-        		<button class="btn btn-outline-secondary" id="sendReply"><i class="far fa-comment-dots fa-lg"></i></button>
-        	</div>
+  <c:if test="${not empty sessionScope.loggedInMember }">
+    <!-- 댓글 작성 textarea container -->
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <hr>
+          <!-- .input-group>textarea#replyTextarea.form-control+.input-group-append>button.btn.btn-outline-secondary#sendReply -->
+          <div class="input-group">
+            <textarea name="" id="replyTextarea" class="form-control"></textarea>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" id="sendReply">
+                <i class="far fa-comment-dots fa-lg"></i>
+              </button>
+            </div>
+          </div>
+
         </div>
-        
       </div>
     </div>
-  </div>
-</c:if>
+  </c:if>
 
 
   <!-- 댓글 container -->
