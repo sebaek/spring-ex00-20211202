@@ -1,6 +1,7 @@
 package org.zerock.controller.project1;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,7 @@ public class BoardController {
 	@GetMapping({ "/get", "/modify" })
 	public void get(@RequestParam("id") Integer id, Model model) {
 		BoardVO board = service.get(id);
-		
+
 		String[] fileNames = service.getFileNamesByBoardId(id);
 
 		model.addAttribute("board", board);
@@ -56,10 +57,10 @@ public class BoardController {
 	}
 
 	@PostMapping("/modify")
-	public String modify(BoardVO board, MultipartFile[] files, RedirectAttributes rttr) {
-
+	public String modify(BoardVO board, String[] removeFile, MultipartFile[] files, RedirectAttributes rttr) {
+		
 		try {
-			if (service.modify(board, files)) {
+			if (service.modify(board, removeFile, files)) {
 				rttr.addFlashAttribute("result", board.getId() + "번 게시글이 수정되었습니다.");
 			}
 		} catch (IllegalStateException | IOException e) {
@@ -90,7 +91,7 @@ public class BoardController {
 			service.register(board, files);
 			// 4. add attribute
 			rttr.addFlashAttribute("result", board.getId() + "번 게시글이 등록되었습니다.");
-			
+
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
 			rttr.addFlashAttribute("result", "게시물 등록 중 오류가 발생하였습니다.");

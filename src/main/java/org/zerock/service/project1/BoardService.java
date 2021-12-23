@@ -131,10 +131,28 @@ public class BoardService {
 	}
 
 	@Transactional
-	public boolean modify(BoardVO board, MultipartFile[] files) throws IllegalStateException, IOException {
+	public boolean modify(BoardVO board, String[] removeFile, MultipartFile[] files) throws IllegalStateException, IOException {
 		modify(board);
 		
 		String basePath = staticRoot + board.getId();
+		// 파일 삭제
+		if (removeFile != null) {
+			for (String removeFileName : removeFile) {
+				// file system에서 삭제
+				String path = basePath + "\\" + removeFileName;
+				File target = new File(path);
+				
+				if (target.exists()) {
+					target.delete();
+				}
+				
+				// db table에서 삭제
+				fileMapper.delete(board.getId(), removeFileName);
+				
+			}
+		}
+		
+		// 새 파일 추가
 		if (files[0].getSize() > 0) {
 			// files가 있을 때만 폴더 생성
 			// 1. 새 게시물 id 이름의 folder 만들기

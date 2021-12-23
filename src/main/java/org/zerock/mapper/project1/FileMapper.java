@@ -8,4 +8,6 @@ public interface FileMapper {
 
 	String[] selectNamesByBoardId(Integer boardId);
 
+	void delete(@Param("boardId") Integer boardId, @Param("fileName") String fileName);
+
 }

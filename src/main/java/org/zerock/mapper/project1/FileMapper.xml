@@ -5,6 +5,10 @@
 
 <mapper namespace="org.zerock.mapper.project1.FileMapper">
 
+	<delete id="delete">
+	DELETE FROM File WHERE boardId = #{boardId} AND fileName = #{fileName}
+	</delete>
+
 	<select id="selectNamesByBoardId" resultType="string">
 	SELECT fileName FROM File WHERE boardId = #{boardId}
 	</select>
