@@ -24,6 +24,14 @@
   <input type="submit" value="전송">
 </form>
 
+<hr>
+
+<form action="${pageContext.request.contextPath }/cont19/met02" method="post" enctype="multipart/form-data">
+  <input type="file" name="file1"> <br>
+  <input type="file" name="file2"> <br>
+  <input type="submit" value="전송">
+</form>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>
 </html>
