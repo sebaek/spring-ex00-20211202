@@ -120,6 +120,10 @@ public class BoardService {
 		
 		
 	}
+
+	public String[] getFileNamesByBoardId(Integer id) {
+		return fileMapper.selectNamesByBoardId(id);
+	}
 }
 
 

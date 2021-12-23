@@ -5,6 +5,10 @@
 
 <mapper namespace="org.zerock.mapper.project1.FileMapper">
 
+	<select id="selectNamesByBoardId" resultType="string">
+	SELECT fileName FROM File WHERE boardId = #{boardId}
+	</select>
+
 	<insert id="insert">
 	INSERT INTO File (boardId, fileName) VALUES (#{boardId}, #{fileName})
 	</insert>

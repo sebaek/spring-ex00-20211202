@@ -48,8 +48,11 @@ public class BoardController {
 	@GetMapping({ "/get", "/modify" })
 	public void get(@RequestParam("id") Integer id, Model model) {
 		BoardVO board = service.get(id);
+		
+		String[] fileNames = service.getFileNamesByBoardId(id);
 
 		model.addAttribute("board", board);
+		model.addAttribute("fileNames", fileNames);
 	}
 
 	@PostMapping("/modify")
