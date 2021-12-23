@@ -1,10 +1,13 @@
 package org.zerock.service.project1;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 import org.zerock.domain.project1.BoardVO;
 import org.zerock.domain.project1.PageInfoVO;
 import org.zerock.mapper.project1.BoardMapper;
@@ -86,6 +89,25 @@ public class BoardService {
 		pageInfo.setHasNextButton(hasNextButton);
 
 		return pageInfo;
+	}
+
+	@Transactional
+	public void register(BoardVO board, MultipartFile[] files) throws IllegalStateException, IOException {
+
+		register(board);
+		
+		// write files
+		String basePath = "C:\\Users\\user\\Desktop\\course\\fileupload\\" + board.getId();
+		// 1. 새 게시물 id 이름의 folder 만들기
+		File newFolder = new File(basePath);
+		newFolder.mkdirs();
+		// 2. 위 폴더에 files 쓰기
+		for (MultipartFile file : files) {
+			if (file != null && file.getSize() > 0) {
+				String path = basePath + "\\" + file.getOriginalFilename();
+				file.transferTo(new File(path));
+			}
+		}
 	}
 }
 
