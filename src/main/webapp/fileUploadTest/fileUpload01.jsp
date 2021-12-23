@@ -35,7 +35,7 @@
 <hr>
 
 <form action="${pageContext.request.contextPath }/cont19/met03" method="post" enctype="multipart/form-data">
-  <input type="file" multiple name="files"> <br>
+  <input type="file" multiple name="files" accept="image/*"> <br>
   <input type="submit" value="전송">
 </form>
 
