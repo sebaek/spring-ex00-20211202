@@ -57,6 +57,37 @@ public class Controller19 {
 		
 		if (file2 != null) {
 			System.out.println(file2.getOriginalFilename());
+			
+			String path = "C:\\Users\\user\\Desktop\\course\\fileupload\\" + file2.getOriginalFilename();
+			
+			try {
+				file2.transferTo(new File(path));
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	@RequestMapping("/met03")
+	public void method03(MultipartFile[] files) {
+		for (MultipartFile file : files) {
+			if (file != null) {
+				System.out.println(file.getOriginalFilename());
+				String path = "C:\\Users\\user\\Desktop\\course\\fileupload\\" + file.getOriginalFilename();
+				try {
+					file.transferTo(new File(path));
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 }
