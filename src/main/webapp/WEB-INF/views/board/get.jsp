@@ -159,7 +159,7 @@
           </div>
           
           <c:forEach items="${fileNames }" var="fileName">
-            <p>${fileName }</p>
+            <img src="/static/${board.id }/${fileName }" alt="${fileName }">
           </c:forEach>
           
           <div class="form-group">
