@@ -1,7 +1,6 @@
 package org.zerock.controller.project1;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +57,7 @@ public class BoardController {
 
 	@PostMapping("/modify")
 	public String modify(BoardVO board, String[] removeFile, MultipartFile[] files, RedirectAttributes rttr) {
-		
+
 		try {
 			if (service.modify(board, removeFile, files)) {
 				rttr.addFlashAttribute("result", board.getId() + "번 게시글이 수정되었습니다.");
@@ -70,8 +69,7 @@ public class BoardController {
 
 		// 게시물 조회로 redirect
 		/*
-		 * rttr.addAttribute("id", board.getId());
-		 * return "redirect:/board/get";
+		 * rttr.addAttribute("id", board.getId()); return "redirect:/board/get";
 		 */
 
 		// 목록 조회로 redirect
