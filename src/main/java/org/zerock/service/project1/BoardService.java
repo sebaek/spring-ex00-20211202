@@ -2,6 +2,7 @@ package org.zerock.service.project1;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -20,8 +21,12 @@ import org.zerock.mapper.project1.ReplyMapper;
 import lombok.Setter;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
+import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
+import software.amazon.awssdk.services.s3.model.ObjectCannedACL;
+import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 @Service
 public class BoardService {
@@ -62,9 +67,32 @@ public class BoardService {
 				.credentialsProvider(StaticCredentialsProvider.create(credentials))
 				.region(region)
 				.build();
-		
+
 		System.out.println("############# s3 client ###############");
 		System.out.println(s3);
+	}
+
+	// s3에서 key에 해당하는 객체 삭제
+	private void deleteObject(String key) {
+		DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()
+																	.bucket(bucketName)
+																	.key(key)
+																	.build();
+
+		s3.deleteObject(deleteObjectRequest);
+	}
+
+	// s3에서 key로 객체 업로드(put)
+	private void putObject(String key, Long size, InputStream source) {
+		PutObjectRequest putObjectRequest = PutObjectRequest.builder()
+				                                            .bucket(bucketName)
+				                                            .key(key)
+				                                            .acl(ObjectCannedACL.PUBLIC_READ)
+				                                            .build();
+		
+		RequestBody requestBody = RequestBody.fromInputStream(source, size);
+		
+		s3.putObject(putObjectRequest, requestBody);
 	}
 
 	public boolean register(BoardVO board) {
