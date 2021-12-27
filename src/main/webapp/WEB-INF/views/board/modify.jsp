@@ -44,7 +44,7 @@
                 <input class="form-check-input" type="checkbox" name="removeFile" value="${fileName }">
               </div>
               <div class="col-11">
-                <img class="img-fluid" src="https://s20211227-00002.s3.ap-northeast-2.amazonaws.com/board/${board.id }/${fileName }" alt="${fileName }">
+                <img class="img-fluid" src="${staticUrl }/${board.id }/${fileName }" alt="${fileName }">
               </div>
             </div>
           </c:forEach>
